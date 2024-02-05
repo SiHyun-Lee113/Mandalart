@@ -1,16 +1,13 @@
-# mandalart
+# 프로젝트 기능 리스트
+1. 만다라트 계획표 작성
+   - 정사각형
+   - 정삼각형
+   - 정육각형
+2. 만다라트 계획표 수정
+3. 만다라트 계획표 삭제
+4. 만다라트 계획표 공유
+    - 이미지로 공유
+    - URL로 공유
+5. 만다르트 계획표 web 페이지
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# 클래스 설명
