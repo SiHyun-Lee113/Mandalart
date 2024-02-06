@@ -6,8 +6,8 @@
 - macOS 14.3
 - Flutter SDK : 3.16.7
 - Dart : 3.2.4
-- UI 설계 : <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> https://www.figma.com/file/ZdNGIQLrydPXBHxEUC2IL9/Mandalart?type=design&node-id=0%3A1&mode=design&t=vGcqKmPZRbKdI7cs-1
-- 일정 관리 : https://www.notion.so/39f3d184c58b47588f17143f150c530e?v=807b04abf24e4285b97169310e93ab86&pvs=4
+- UI 설계 : <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> 
+- 일정 관리 : <img src="https://img.shields.io/badge/Notion-00000?style=for-the-badge&logo=Notion&logoColor=white">
 
 # 개발 기간 
 - 24.02.05 ~ 진행중
