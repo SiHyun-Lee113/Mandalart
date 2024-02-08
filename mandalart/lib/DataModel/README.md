@@ -19,3 +19,6 @@ class MandalartDto {
   Mandalart mandalart;
 }
 ```
+## Server에서 관리할 데이터
+- User Id
+  - User's Mandalart
