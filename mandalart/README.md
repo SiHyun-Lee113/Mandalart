@@ -20,11 +20,15 @@
    - 만다라트 데이터 Access
 9. 어플리케이션 사용 설명
 
-## 필요 기능 메서드
+## Util 메서드
 - 네트워크 체크
 - 소셜 로그인
   - google
-- 만다라트 데이터 NoSQL Document로 변환
+- Data Object
+  - Data Object To Json
+  - Json To Data Object
 - FireStore 
    - FireStore 접속
+   - FireStore CRUD
+
 # 클래스 설명
