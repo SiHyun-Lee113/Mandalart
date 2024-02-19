@@ -19,4 +19,3 @@ class MandalartService {
     print(mandalart);
   }
 }
-

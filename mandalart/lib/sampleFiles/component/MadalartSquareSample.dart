@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/Mandalart.dart';
@@ -27,6 +28,7 @@ class MandalartSquare extends StatefulWidget {
 
 class _MandalartSquareState extends State<MandalartSquare> {
   final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
   late final MandalartProvider mandalartProvider;
 
   @override
@@ -39,6 +41,7 @@ class _MandalartSquareState extends State<MandalartSquare> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        key: scaffoldKey,
         appBar: AppBar(
           title: const Text('사각형 만다라트'),
         ),
@@ -56,17 +59,26 @@ class _MandalartSquareState extends State<MandalartSquare> {
                       onSaved: (val) {
                         mandalartProvider.createMandalart(1, val);
                       },
+                      validator: (val) {
+                        return mandalartProvider.notInputValidation(val);
+                      },
                       label: 'level 1',
                       children: List.generate(8, (index) {
                         return renderLevel2InputField(
                           onSaved: (val) {
                             mandalartProvider.addSpecGoalsLv2(val);
                           },
+                          validator: (val) {
+                            return mandalartProvider.notInputValidation(val);
+                          },
                           label: 'level 2',
                           children: [
                             renderLevel3InputField(
                                 onSaved: (val) {
                                   mandalartProvider.addSpecGoalsLv3(0, val);
+                                },
+                                validator: (val) {
+                                  return mandalartProvider.notInputValidation(val);
                                 },
                                 viewCount: 8
                             ),
@@ -82,8 +94,24 @@ class _MandalartSquareState extends State<MandalartSquare> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            formKey.currentState?.save();
-            mandalartProvider.printMandalart();
+            if (formKey.currentState!.validate()) {
+              formKey.currentState?.save();
+              mandalartProvider.printMandalart();
+            } else {
+              final snackBar = SnackBar(
+                elevation: 0,
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: Colors.transparent,
+                content: AwesomeSnackbarContent(
+                  title: 'On Snap!',
+                  message:
+                  'This is an example error message that will be shown in the body of snackbar!',
+                  contentType: ContentType.failure,
+                ),
+              );
+
+              scaffoldKey.currentState?.showSnackBar(snackBar);
+            }
           },
           tooltip: 'Increment',
           child: const Icon(Icons.add),

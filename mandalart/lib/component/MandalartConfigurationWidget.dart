@@ -5,7 +5,8 @@ import '../util/style/MandalartStyle.dart';
 ExpansionTile renderLevel1InputField(
     {required FormFieldSetter onSaved,
     required String label,
-    required List<Widget> children}) {
+    required List<Widget> children,
+    required FormFieldValidator validator}) {
   final controller = TextEditingController();
   return ExpansionTile(
     title: TextFormField(
@@ -13,6 +14,7 @@ ExpansionTile renderLevel1InputField(
       textAlign: TextAlign.center,
       decoration: MandalartTextFieldStyle(label),
       onSaved: onSaved,
+      validator: validator,
     ),
     children: children,
   );
@@ -20,8 +22,9 @@ ExpansionTile renderLevel1InputField(
 
 ExpansionTile renderLevel2InputField(
     {required FormFieldSetter onSaved,
-      required String label,
-    required List<Widget> children}) {
+    required String label,
+    required List<Widget> children,
+    required FormFieldValidator validator}) {
   final controller = TextEditingController();
   return ExpansionTile(
     title: TextFormField(
@@ -29,14 +32,18 @@ ExpansionTile renderLevel2InputField(
       textAlign: TextAlign.center,
       decoration: MandalartTextFieldStyle(label),
       onSaved: onSaved,
+      validator: validator,
     ),
     children: children,
   );
 }
 
 GridView renderLevel3InputField(
-    {required FormFieldSetter onSaved, required int viewCount}) {
-  List<TextEditingController> controllers = List.generate(8, (index) => TextEditingController());
+    {required FormFieldSetter onSaved,
+    required int viewCount,
+    required FormFieldValidator validator}) {
+  List<TextEditingController> controllers =
+      List.generate(8, (index) => TextEditingController());
   return GridView.count(
     shrinkWrap: true,
     crossAxisCount: viewCount == 8 ? 4 : 3,
@@ -53,6 +60,7 @@ GridView renderLevel3InputField(
           child: TextFormField(
             controller: controllers[index],
             onSaved: onSaved,
+            validator: validator,
             decoration: InputDecoration(
               hintText: 'Text Field ${index + 1}',
               contentPadding: const EdgeInsets.all(8.0),

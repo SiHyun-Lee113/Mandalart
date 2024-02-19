@@ -35,4 +35,11 @@ class MandalartProvider extends ChangeNotifier {
   void printMandalart() {
     MandalartService().printMandalart(mandalart);
   }
+
+  String? notInputValidation(String input) {
+    if (input.isEmpty) {
+      return '목표를 작성해 주세요!';
+    }
+    return null;
+  }
 }
