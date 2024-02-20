@@ -10,6 +10,8 @@ ExpansionTile renderLevel1InputField(
   final controller = TextEditingController();
   return ExpansionTile(
     title: TextFormField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
       controller: controller,
       textAlign: TextAlign.center,
       decoration: MandalartTextFieldStyle(label),
@@ -28,9 +30,11 @@ ExpansionTile renderLevel2InputField(
   final controller = TextEditingController();
   return ExpansionTile(
     title: TextFormField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
       controller: controller,
       textAlign: TextAlign.center,
-      decoration: MandalartTextFieldStyle(label),
+      decoration: MandalartTextFieldStyleLv2(label),
       onSaved: onSaved,
       validator: validator,
     ),
@@ -58,11 +62,12 @@ GridView renderLevel3InputField(
         ),
         child: Center(
           child: TextFormField(
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
             controller: controllers[index],
             onSaved: onSaved,
             validator: validator,
             decoration: InputDecoration(
-              hintText: 'Text Field ${index + 1}',
               contentPadding: const EdgeInsets.all(8.0),
               border: InputBorder.none,
             ),

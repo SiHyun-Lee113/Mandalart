@@ -27,3 +27,22 @@ InputDecoration MandalartTextFieldStyle(String labelText) {
     ),
   );
 }
+
+InputDecoration MandalartTextFieldStyleLv2(String labelText) {
+  return InputDecoration(
+    labelText: labelText,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0), // Set round border
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0), // Set round border
+      borderSide: BorderSide(color: Colors.blue), // Set border color
+    ),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0), // Adjust the vertical padding
+    // Remove underline
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+  );
+}
