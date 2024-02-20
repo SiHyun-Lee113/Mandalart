@@ -6,6 +6,15 @@ import '../DataModel/Mandalart.dart';
 
 class MandalartProvider extends ChangeNotifier {
   late Mandalart mandalart;
+  bool _isExpanded = false;
+
+  bool get isExpanded => _isExpanded;
+
+  void toggleExpanded() {
+    print(_isExpanded);
+    _isExpanded = !_isExpanded;
+    notifyListeners();
+  }
 
   Mandalart createMandalart(int level, String content) {
     if (level == 1) {

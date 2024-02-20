@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/MandalartProvider.dart';
 import '../util/style/MandalartStyle.dart';
 
 ExpansionTile renderLevel1InputField(
     {required FormFieldSetter onSaved,
     required String label,
     required List<Widget> children,
-    required FormFieldValidator validator}) {
+    required FormFieldValidator validator,
+    required ExpansionTileController expansionController}) {
   final controller = TextEditingController();
+
   return ExpansionTile(
+    controller: expansionController,
     title: TextFormField(
+      onTap: () {
+        if (expansionController.isExpanded) {
+          expansionController.collapse();
+        } else {
+          expansionController.expand();
+        }
+      },
       keyboardType: TextInputType.multiline,
       maxLines: null,
       controller: controller,
@@ -26,10 +38,19 @@ ExpansionTile renderLevel2InputField(
     {required FormFieldSetter onSaved,
     required String label,
     required List<Widget> children,
-    required FormFieldValidator validator}) {
+    required FormFieldValidator validator,
+    required ExpansionTileController expansionController}) {
   final controller = TextEditingController();
   return ExpansionTile(
+    controller: expansionController,
     title: TextFormField(
+      onTap: () {
+        if (expansionController.isExpanded) {
+          expansionController.collapse();
+        } else {
+          expansionController.expand();
+        }
+      },
       keyboardType: TextInputType.multiline,
       maxLines: null,
       controller: controller,
