@@ -2,7 +2,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/Mandalart.dart';
-import 'package:mandalart/component/MandalartConfigurationWidget.dart';
+import 'package:mandalart/component/MandalartInputWidget.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:mandalart/service/MandalartService.dart';
 import 'package:mandalart/util/style/MandalartStyle.dart';
@@ -14,7 +14,9 @@ void main() {
       ChangeNotifierProvider<MandalartProvider>.value(
           value: MandalartProvider()),
     ],
-    child: MandalartSquare(viewCount: 3,),
+    child: MandalartSquare(
+      viewCount: 3,
+    ),
   ));
 }
 
@@ -60,13 +62,15 @@ class _MandalartSquareState extends State<MandalartSquare> {
                   padding: const EdgeInsets.all(8),
                   children: [
                     renderLevel1InputField(
-                      expansionController: expansionController,
+                        expansionController: expansionController,
                         onSaved: (val) {
                           mandalartProvider.createMandalart(1, val);
                         },
                         validator: (val) {
                           return mandalartProvider.notInputValidation(val);
                         },
+                        edgeInsets: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
                         label: 'level 1',
                         children: List.generate(viewCount, (index) {
                           final expansionController = ExpansionTileController();
@@ -79,20 +83,29 @@ class _MandalartSquareState extends State<MandalartSquare> {
                             validator: (val) {
                               return mandalartProvider.notInputValidation(val);
                             },
+                            edgeInsets: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
                             label: 'level 2',
                             children: [
                               renderLevel3InputField(
-                                  onSaved: (val) {
-                                    mandalartProvider.addSpecGoalsLv3(0, val);
-                                  },
-                                  validator: (val) {
-                                    return mandalartProvider
-                                        .notInputValidation(val);
-                                  },
-                                  viewCount: viewCount),
+                                onSaved: (val) {
+                                  mandalartProvider.addSpecGoalsLv3(0, val);
+                                },
+                                validator: (val) {
+                                  return mandalartProvider
+                                      .notInputValidation(val);
+                                },
+                                viewCount: viewCount,
+                                edgeInsets: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                              ),
                             ],
                           );
                         })),
+                    const SizedBox(
+                      height: 200,
+                    )
                   ],
                 ),
               ),

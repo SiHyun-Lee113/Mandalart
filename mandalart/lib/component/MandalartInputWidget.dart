@@ -9,7 +9,8 @@ ExpansionTile renderLevel1InputField(
     required String label,
     required List<Widget> children,
     required FormFieldValidator validator,
-    required ExpansionTileController expansionController}) {
+    required ExpansionTileController expansionController,
+    required EdgeInsets edgeInsets}) {
   final controller = TextEditingController();
 
   return ExpansionTile(
@@ -22,6 +23,7 @@ ExpansionTile renderLevel1InputField(
           expansionController.expand();
         }
       },
+      scrollPadding: edgeInsets,
       keyboardType: TextInputType.multiline,
       maxLines: null,
       controller: controller,
@@ -34,16 +36,19 @@ ExpansionTile renderLevel1InputField(
   );
 }
 
-ExpansionTile renderLevel2InputField(
-    {required FormFieldSetter onSaved,
-    required String label,
-    required List<Widget> children,
-    required FormFieldValidator validator,
-    required ExpansionTileController expansionController}) {
+ExpansionTile renderLevel2InputField({
+  required FormFieldSetter onSaved,
+  required String label,
+  required List<Widget> children,
+  required FormFieldValidator validator,
+  required ExpansionTileController expansionController,
+  required EdgeInsets edgeInsets,
+}) {
   final controller = TextEditingController();
   return ExpansionTile(
     controller: expansionController,
     title: TextFormField(
+      scrollPadding: edgeInsets,
       onTap: () {
         if (expansionController.isExpanded) {
           expansionController.collapse();
@@ -66,7 +71,8 @@ ExpansionTile renderLevel2InputField(
 GridView renderLevel3InputField(
     {required FormFieldSetter onSaved,
     required int viewCount,
-    required FormFieldValidator validator}) {
+    required FormFieldValidator validator,
+    required EdgeInsets edgeInsets}) {
   List<TextEditingController> controllers =
       List.generate(8, (index) => TextEditingController());
   return GridView.count(
@@ -83,6 +89,7 @@ GridView renderLevel3InputField(
         ),
         child: Center(
           child: TextFormField(
+            scrollPadding: edgeInsets,
             keyboardType: TextInputType.multiline,
             maxLines: null,
             controller: controllers[index],
