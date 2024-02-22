@@ -1,7 +1,7 @@
 class Mandalart {
   final int _level;
   final String _content;
-  List<Mandalart>? _specificGoals;
+  List<Mandalart> _specificGoals = [];
 
   Mandalart(this._level, this._content);
 
@@ -13,12 +13,12 @@ class Mandalart {
 
   @override
   String toString() {
-    return '{"Mandalart" : {"level": "$_level", "content": "$_content", "specificGoals": $_specificGoals}}\n';
+    return '{"Mandalart" : {"level": "$_level", "content": "$_content", "specificGoals": ${_specificGoals.length}}}\n';
   }
 
   //Todo
-  Map<String, dynamic> toJSon() {
-    // json_seriaslizable 사용
-    return ;
-  }
+  // Map<String, dynamic> toJSon() {
+  //   // json_seriaslizable 사용
+  //   return ;
+  // }
 }
