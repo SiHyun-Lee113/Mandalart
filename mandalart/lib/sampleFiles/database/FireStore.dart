@@ -25,12 +25,19 @@ class _FireStoreTestState extends State<FireStoreTest> {
   var db = FirebaseFirestore.instance;
   String dbResult = "Firestore result";
 
-  void create() {
+  Future<void> create() async {
     final city = <String, String>{
       "name": "Los Angeles",
       "state": "CA",
       "country": "USA"
     };
+
+    CollectionReference newCollection = db.collection('new collection 1');
+    await newCollection.add({
+      'name': 'John Doe',
+      'email': 'johndoe@example.com',
+      'age': 30,
+    });
 
     setState(() {
       db.collection("cities").doc("LA").set(city).then((value) {

@@ -40,7 +40,7 @@ class _GoogleLoginState extends State<GoogleLogin> {
 
     await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
       setState(() {
-        userName = value.user!.email!;
+        userName = value.user!.displayName!;
       });
     }).onError((error, stackTrace) {
       print('error $error');
