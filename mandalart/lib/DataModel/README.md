@@ -10,15 +10,14 @@ class Mandalart {
     Mandalart JsonToMandalart(String json){}   
 }
 ```
-## Mandalart DTO
+## 만다라트 User 데이터
 ```dart
-class MandalartDto {
-  String userId;
-  String mandalartName;
-  int mandalartSize;
-  Mandalart mandalart;
+class MandalartUser {
+  String _name = '';
+  String _collectionName = '';
+
+  static final MandalartUser _instance = MandalartUser._internal();
+  factory MandalartUser() => _instance;
+  MandalartUser._internal();
 }
 ```
-## Server에서 관리할 데이터
-- User Id
-  - User's Mandalart
