@@ -27,6 +27,16 @@ class LoginViewModel extends ChangeNotifier {
     return _user.collection;
   }
 
+  String getUserEmail() {
+    if (_user.email.isEmpty) return throw Exception('No login information');
+    return _user.email;
+  }
+
+  String getUserPhotoUrl() {
+    if (_user.photoUrl.isEmpty) return throw Exception('No login information');
+    return _user.photoUrl;
+  }
+
   Future<void> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -42,6 +52,8 @@ class LoginViewModel extends ChangeNotifier {
           await _auth.signInWithCredential(credential);
 
       _user.name = userCredential.user!.displayName!;
+      _user.email = googleUser!.email;
+      _user.photoUrl = googleUser.photoUrl!;
       notifyListeners();
       print('Login with google : ${_user.name}');
     } catch (error) {

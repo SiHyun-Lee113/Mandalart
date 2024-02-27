@@ -1,6 +1,8 @@
 class MandalartUser {
   String _name = '';
   String _collectionName = '';
+  String _email = '';
+  String _photoUrl = '';
 
   static final MandalartUser _instance = MandalartUser._internal();
   factory MandalartUser() => _instance;
@@ -14,6 +16,16 @@ class MandalartUser {
   String get name => _name;
   set name(String value) {
     _name = value;
+  }
+
+  String get email => _email;
+  set email(String value) {
+    _email = value;
+  }
+
+  String get photoUrl => _photoUrl;
+  set photoUrl(String value) {
+    _photoUrl = value;
   }
 
   bool checkLogin() => _name.isNotEmpty ? true : false;

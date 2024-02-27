@@ -1,7 +1,7 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
-import 'package:mandalart/component/MandalartInputWidget.dart';
-import 'package:mandalart/component/RenderAppbarWidget.dart';
+import 'package:mandalart/component/WidgetsForAppbar.dart';
+import 'package:mandalart/component/WidgetsForMandalartInput.dart';
+import 'package:mandalart/provider/LoginProvider.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,6 @@ class MandalartInputPage extends StatefulWidget {
 
 class _MandalartInputPageState extends State<MandalartInputPage> {
   final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
   late final MandalartProvider mandalartProvider;
   late final ExpansionTileController expansionController;
   late final int viewCount = widget.viewCount;
@@ -30,9 +29,12 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
 
   @override
   Widget build(BuildContext context) {
+    final loginVM = Provider.of<LoginViewModel>(context);
+
     return Scaffold(
-      key: scaffoldKey,
       appBar: const RenderAppbar(title: '삼각형 만다라트'),
+      endDrawer:
+          loginVM.checkLogin() ? RenderSignInDrawer() : RenderSignOutDrawer(),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -99,21 +101,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
           if (formKey.currentState!.validate()) {
             formKey.currentState?.save();
             mandalartProvider.printMandalart();
-          } else {
-            final snackBar = SnackBar(
-              elevation: 0,
-              behavior: SnackBarBehavior.floating,
-              backgroundColor: Colors.transparent,
-              content: AwesomeSnackbarContent(
-                title: 'On Snap!',
-                message:
-                    'This is an example error message that will be shown in the body of snackbar!',
-                contentType: ContentType.failure,
-              ),
-            );
-
-            scaffoldKey.currentState?.showSnackBar(snackBar);
-          }
+          } else {}
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

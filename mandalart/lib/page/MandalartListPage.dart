@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mandalart/component/RenderAppbarWidget.dart';
+import 'package:mandalart/component/WidgetsForAppbar.dart';
+import 'package:mandalart/provider/LoginProvider.dart';
+import 'package:provider/provider.dart';
 
 class MandalartListPage extends StatefulWidget {
   const MandalartListPage({super.key});
@@ -11,11 +13,15 @@ class MandalartListPage extends StatefulWidget {
 class _MandalartListPageState extends State<MandalartListPage> {
   @override
   Widget build(BuildContext context) {
+    final loginVM = Provider.of<LoginViewModel>(context);
     return MaterialApp(
       home: Scaffold(
-          appBar: RenderAppbar(
+          appBar: const RenderAppbar(
             title: '만다라트 ListPage',
           ),
+          endDrawer: loginVM.checkLogin()
+              ? RenderSignInDrawer()
+              : RenderSignOutDrawer(),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

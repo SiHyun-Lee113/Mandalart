@@ -1,11 +1,7 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mandalart/DataModel/Mandalart.dart';
-import 'package:mandalart/component/MandalartInputWidget.dart';
+import 'package:mandalart/component/WidgetsForMandalartInput.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
-import 'package:mandalart/service/MandalartService.dart';
-import 'package:mandalart/util/style/MandalartStyle.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -98,7 +94,9 @@ class _MandalartSquareState extends State<MandalartSquare> {
                                 },
                                 viewCount: viewCount,
                                 edgeInsets: EdgeInsets.only(
-                                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom),
                               ),
                             ],
                           );
