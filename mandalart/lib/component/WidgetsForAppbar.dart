@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mandalart/provider/LoginProvider.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,28 @@ class RenderAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class RenderSignInDrawer extends StatelessWidget {
+class RenderDrawerWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator(); // 인증 상태 확인 중일 때 로딩 표시
+        } else {
+          print(snapshot);
+          if (snapshot.hasData) {
+            return SignInDrawer();
+          } else {
+            return SignOutDrawer();
+          }
+        }
+      },
+    );
+  }
+}
+
+class SignInDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginVM = Provider.of<LoginViewModel>(context);
@@ -44,7 +66,7 @@ class RenderSignInDrawer extends StatelessWidget {
             accountEmail: Text(loginVM.getUserEmail()),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.white,
-              backgroundImage: Image.network(loginVM.getUserPhotoUrl()).image,
+              backgroundImage: NetworkImage(loginVM.getUserPhotoUrl()),
             ),
             decoration: BoxDecoration(
               border: Border.all(width: 0, color: Colors.transparent),
@@ -55,27 +77,29 @@ class RenderSignInDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: Colors.grey,
-              ),
-              title: Text('Home'),
-              onTap: () => Navigator.pushNamedAndRemoveUntil(
-                  context, '/mdList', (route) => false)),
+            leading: const Icon(
+              Icons.home,
+              color: Colors.grey,
+            ),
+            title: Text('Home'),
+            onTap: () => Navigator.pushNamedAndRemoveUntil(
+                context, '/mdList', (route) => false),
+          ),
           ListTile(
-              leading: const Icon(
-                Icons.logout,
-                color: Colors.grey,
-              ),
-              title: Text('Sign Out'),
-              onTap: () => loginVM.loginOrLogout()),
+            leading: const Icon(
+              Icons.logout,
+              color: Colors.grey,
+            ),
+            title: Text('Sign Out'),
+            onTap: () => loginVM.handleAuth(),
+          ),
         ],
       ),
     );
   }
 }
 
-class RenderSignOutDrawer extends StatelessWidget {
+class SignOutDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginVM = Provider.of<LoginViewModel>(context);
@@ -105,20 +129,22 @@ class RenderSignOutDrawer extends StatelessWidget {
             accountEmail: null,
           ),
           ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: Colors.grey,
-              ),
-              title: Text('Home'),
-              onTap: () => Navigator.pushNamedAndRemoveUntil(
-                  context, '/mdList', (route) => false)),
+            leading: const Icon(
+              Icons.home,
+              color: Colors.grey,
+            ),
+            title: Text('Home'),
+            onTap: () => Navigator.pushNamedAndRemoveUntil(
+                context, '/mdList', (route) => false),
+          ),
           ListTile(
-              leading: const Icon(
-                Icons.logout,
-                color: Colors.grey,
-              ),
-              title: Text('Sing In'),
-              onTap: () => loginVM.loginOrLogout()),
+            leading: const Icon(
+              Icons.login,
+              color: Colors.grey,
+            ),
+            title: Text('Sign In'),
+            onTap: () => loginVM.handleAuth(),
+          ),
         ],
       ),
     );

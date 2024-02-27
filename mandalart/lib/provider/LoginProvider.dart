@@ -8,12 +8,68 @@ class LoginViewModel extends ChangeNotifier {
   late final FirebaseAuth _auth = FirebaseAuth.instance;
   late final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  Future<void> loginOrLogout() async {
+  LoginViewModel() {
+    getUserInfo();
+  }
+
+  Stream<User?> get user => _auth.authStateChanges();
+
+  Future<void> handleAuth() async {
     if (_user.checkLogin()) {
-      signOut();
+      _signOut();
     } else {
-      signInWithGoogle();
+      _signInWithGoogle();
     }
+  }
+
+  Future<void> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      await _auth.signInWithCredential(credential);
+
+      getUserInfo();
+
+      print('Login with google : ${_user.name}');
+    } catch (error) {
+      print('error $error');
+    }
+    notifyListeners();
+  }
+
+  void getUserInfo() {
+    try {
+      User? user = _auth.currentUser;
+      if (user != null) {
+        _user.name = user.displayName!;
+        _user.email = user.email!;
+        _user.photoUrl = user.photoURL!;
+      } else {
+        print('User is not logged in');
+      }
+    } catch (error) {
+      print('Error getting user info: $error');
+    }
+  }
+
+  Future<void> _signOut() async {
+    _user.name = '';
+    _user.collection = '';
+    _user.photoUrl = '';
+
+    await _auth.signOut();
+    notifyListeners();
+  }
+
+  bool checkLogin() {
+    return _user.checkLogin();
   }
 
   String getUserName() {
@@ -35,40 +91,5 @@ class LoginViewModel extends ChangeNotifier {
   String getUserPhotoUrl() {
     if (_user.photoUrl.isEmpty) return throw Exception('No login information');
     return _user.photoUrl;
-  }
-
-  Future<void> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-
-      final UserCredential userCredential =
-          await _auth.signInWithCredential(credential);
-
-      _user.name = userCredential.user!.displayName!;
-      _user.email = googleUser!.email;
-      _user.photoUrl = googleUser.photoUrl!;
-      notifyListeners();
-      print('Login with google : ${_user.name}');
-    } catch (error) {
-      print('error $error');
-    }
-  }
-
-  Future<void> signOut() async {
-    _user.name = '';
-    _user.collection = '';
-    print('Logout : ${_user.name}');
-    notifyListeners();
-  }
-
-  bool checkLogin() {
-    return _user.checkLogin();
   }
 }
