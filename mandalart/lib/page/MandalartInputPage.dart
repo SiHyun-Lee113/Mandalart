@@ -33,8 +33,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
 
     return Scaffold(
       appBar: const RenderAppbar(title: '삼각형 만다라트'),
-      endDrawer:
-          loginVM.checkLogin() ? RenderSignInDrawer() : RenderSignOutDrawer(),
+      endDrawer: RenderDrawerWidget(),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [

@@ -20,8 +20,7 @@ class _MandalartTypeSelectionPageState
 
     return Scaffold(
       appBar: const RenderAppbar(title: '만다라트 유형 선택'),
-      endDrawer:
-          loginVM.checkLogin() ? RenderSignInDrawer() : RenderSignOutDrawer(),
+      endDrawer: RenderDrawerWidget(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [Text('data')],

@@ -19,8 +19,7 @@ class _MandalartShowPageState extends State<MandalartShowPage> {
       appBar: RenderAppbar(
         title: 'User의 만다라트',
       ),
-      endDrawer:
-          loginVM.checkLogin() ? RenderSignInDrawer() : RenderSignOutDrawer(),
+      endDrawer: RenderDrawerWidget(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [Text('data')],

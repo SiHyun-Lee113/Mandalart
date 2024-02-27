@@ -19,9 +19,7 @@ class _MandalartListPageState extends State<MandalartListPage> {
           appBar: const RenderAppbar(
             title: '만다라트 ListPage',
           ),
-          endDrawer: loginVM.checkLogin()
-              ? RenderSignInDrawer()
-              : RenderSignOutDrawer(),
+          endDrawer: RenderDrawerWidget(),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

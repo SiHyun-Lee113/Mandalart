@@ -18,34 +18,24 @@ Future<void> main() async {
   );
 
   runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider<MandalartProvider>.value(
-          value: MandalartProvider()),
-      ChangeNotifierProvider<LoginViewModel>.value(
-        value: LoginViewModel(),)
-    ],
-    child: MaterialApp(
-      title: '만다라트 계획표 애플리케이션',
-      initialRoute: '/mdList',
-      routes: {
-        '/mdList': (context) => MandalartListPage(),
-        '/mdShow': (context) => MandalartShowPage(),
-        '/mdTypeSelect': (context) => MandalartTypeSelectionPage(),
-        '/mdInputPage': (context) {
-          final args = ModalRoute.of(context)?.settings.arguments as int?;
-          return MandalartInputPage(viewCount: args ?? -1);
+      providers: [
+        ChangeNotifierProvider<MandalartProvider>.value(
+            value: MandalartProvider()),
+        ChangeNotifierProvider<LoginViewModel>.value(
+          value: LoginViewModel(),
+        )
+      ],
+      child: MaterialApp(
+        title: '만다라트 계획표 애플리케이션',
+        initialRoute: '/mdList',
+        routes: {
+          '/mdList': (context) => MandalartListPage(),
+          '/mdShow': (context) => MandalartShowPage(),
+          '/mdTypeSelect': (context) => MandalartTypeSelectionPage(),
+          '/mdInputPage': (context) {
+            final args = ModalRoute.of(context)?.settings.arguments as int?;
+            return MandalartInputPage(viewCount: args ?? -1);
+          },
         },
-      },
-    )
-
-  ));
-}
-
-class MandalartApp extends StatelessWidget {
-  const MandalartApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
+      )));
 }
