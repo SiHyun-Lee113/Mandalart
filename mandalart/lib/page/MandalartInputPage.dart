@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
+import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMandalartInput.dart';
 import 'package:mandalart/provider/LoginProvider.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
@@ -100,7 +101,13 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
           if (formKey.currentState!.validate()) {
             formKey.currentState?.save();
             mandalartProvider.printMandalart();
-          } else {}
+          } else {
+            bool temporarySave = await inputDialog(context);
+            if (temporarySave) {
+              formKey.currentState?.save();
+              mandalartProvider.printMandalart();
+            }
+          }
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
