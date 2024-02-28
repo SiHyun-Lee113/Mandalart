@@ -1,3 +1,5 @@
+import 'dart:core';
+
 class Mandalart {
   final int _level;
   final String _content;
@@ -5,7 +7,7 @@ class Mandalart {
 
   Mandalart(this._level, this._content);
 
-  List<Mandalart> get specificGoals => _specificGoals!;
+  List<Mandalart> get specificGoals => _specificGoals;
 
   set specificGoals(List<Mandalart> value) {
     _specificGoals = value;
@@ -16,9 +18,30 @@ class Mandalart {
     return '{"Mandalart" : {"level": "$_level", "content": "$_content", "specificGoals": ${_specificGoals.length}}}\n';
   }
 
-  //Todo
-  // Map<String, dynamic> toJSon() {
-  //   // json_seriaslizable 사용
-  //   return ;
-  // }
+  Map<String, dynamic> toJson() {
+    List<Map<String, dynamic>> specificGoalsJson =
+        _specificGoals.map((goal) => goal.toJson()).toList();
+
+    return {
+      'level': _level,
+      'content': _content,
+      'specificGoals': specificGoalsJson,
+    };
+  }
+
+  static Mandalart fromJson(Map<String, dynamic> json) {
+    int level = json['level'];
+    String content = json['content'];
+
+    List<Mandalart> specificGoals = [];
+    if (json['specificGoals'] != null) {
+      json['specificGoals'].forEach((goal) {
+        specificGoals.add(Mandalart.fromJson(goal));
+      });
+    }
+
+    Mandalart mandalart = Mandalart(level, content);
+    mandalart.specificGoals = specificGoals;
+    return mandalart;
+  }
 }
