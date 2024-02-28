@@ -1,0 +1,374 @@
+{
+  "level": 1,
+  "content": "8구단 드래프트 1순위",
+  "specificGoals": [
+    {
+      "level": 2,
+      "content": "몸 만들기",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "몸관리",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "영양제 먹기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "FSQ 90kg",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "유연성",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "RSQ 130kg",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "스테미너",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "가동역",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "식사 저녁7숟갈 아침3숟갈",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "제구",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "인스텝 개선",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "몸통 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "축 흔들지 않기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "릴리즈 포인트 안정",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "불안정 업애기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "하체 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "몸을 열지 않기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "멘탈을 컨트롤",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "구위",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "각도를 만든다",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "위에서부터 공을 던진다",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "손목 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "힘을 모으기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "하반신 주도",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "볼을 앞에서 릴리즈",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "회전수 증가",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "가동력",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "멘탈",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "뚜렷한 목표 목적",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "일희일비 하지 않기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "머리는 차갑게 심장은 뜨겁게",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "핀치에 강하게",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "분위기에 휩쓸리지 않기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "마음의 파도를 안만들기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "승리에 대한 집념",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "동료를 배려하는 마음",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "스피드 160km/h",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "축을 돌리기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "하체 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "체중 증가",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "몸통 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "어깨주변 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "가동력",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "라이너 캐치볼",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "피칭 늘리기",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "인간성",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "감성",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "사랑받는 사람",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "계획성",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "배려",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "감사",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "예의",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "신뢰받는 사람",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "지속력",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "운",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "인사하기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "쓰레기 줍기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "부실 청소",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "물건을 소중히 쓰자",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "심판을 대하는 태도",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "긍정적 사고",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "응원받는 사람",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "책읽기",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "변화구",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "카운트볼 늘리기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "포크볼 완성",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "슬라이더 구위",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "늦게 낮차가 있는 커브",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "좌타자 결정구",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "직구와 같은 폼으로 던지기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "스트라이크 볼을 던질 때 제구",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "거리를 상상하기",
+          "specificGoals": []
+        }
+      ]
+    }
+  ]
+}
