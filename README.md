@@ -6,6 +6,7 @@
 - macOS 14.3
 - Flutter SDK : 3.16.7
 - Dart : 3.2.4
+- 데이터 베이스 : <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white">
 - UI 설계 : <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> 
 - 일정 관리 : <img src="https://img.shields.io/badge/Notion-00000?style=for-the-badge&logo=Notion&logoColor=white">
 
