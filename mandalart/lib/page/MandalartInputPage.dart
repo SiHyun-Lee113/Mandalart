@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMandalartInput.dart';
+import 'package:mandalart/provider/FirebaseProvider.dart';
 import 'package:mandalart/provider/LoginProvider.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class MandalartInputPage extends StatefulWidget {
 class _MandalartInputPageState extends State<MandalartInputPage> {
   final formKey = GlobalKey<FormState>();
   late final MandalartProvider mandalartProvider;
+  late final FirebaseProvider firebaseProvider;
   late final ExpansionTileController expansionController;
   late final int viewCount = widget.viewCount;
 
@@ -25,12 +27,13 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
   void initState() {
     super.initState();
     mandalartProvider = Provider.of<MandalartProvider>(context, listen: false);
+    firebaseProvider = Provider.of<FirebaseProvider>(context, listen: false);
     expansionController = ExpansionTileController(); // 컨트롤러 초기화
   }
 
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+    final loginVM = Provider.of<UserProvider>(context);
 
     return Scaffold(
       appBar: const RenderAppbar(title: '삼각형 만다라트'),
@@ -58,7 +61,6 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
                       label: 'level 1',
                       children: List.generate(viewCount, (index) {
                         final expansionController = ExpansionTileController();
-
                         return renderLevel2InputField(
                           expansionController: expansionController,
                           onSaved: (val) {
@@ -98,14 +100,28 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
+          loginVM.handleAuth();
+
           if (formKey.currentState!.validate()) {
             formKey.currentState?.save();
-            mandalartProvider.printMandalart();
+
+            var mandalart = mandalartProvider.mandalart;
+            firebaseProvider.saveDocument(mandalart);
           } else {
             bool temporarySave = await inputDialog(context);
             if (temporarySave) {
               formKey.currentState?.save();
-              mandalartProvider.printMandalart();
+
+              var mandalart = mandalartProvider.mandalart;
+              var docIndex = -1;
+              await firebaseProvider
+                  .saveDocument(mandalart)
+                  .then((value) => docIndex = value);
+
+              print(docIndex);
+
+              if (!mounted) return;
+              Navigator.pushNamed(context, '/mdShow', arguments: docIndex);
             }
           }
         },
