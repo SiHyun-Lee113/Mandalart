@@ -4,7 +4,9 @@ import 'package:mandalart/provider/LoginProvider.dart';
 import 'package:provider/provider.dart';
 
 class MandalartShowPage extends StatefulWidget {
-  const MandalartShowPage({super.key});
+  const MandalartShowPage({super.key, required this.docIndex});
+
+  final int docIndex;
 
   @override
   State<MandalartShowPage> createState() => _MandalartShowPageState();
@@ -13,16 +15,22 @@ class MandalartShowPage extends StatefulWidget {
 class _MandalartShowPageState extends State<MandalartShowPage> {
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
-
+    final loginVM = Provider.of<UserProvider>(context);
+    String user = loginVM.getUserName();
     return Scaffold(
       appBar: RenderAppbar(
-        title: 'User의 만다라트',
+        title: user,
       ),
       endDrawer: RenderDrawerWidget(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text('data')],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('data'),
+            Text(loginVM.getDocId(widget.docIndex)),
+            Text('${widget.docIndex}'),
+          ],
+        ),
       ),
     );
   }
