@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mandalart/provider/LoginProvider.dart';
+import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
 class RenderAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -55,7 +55,7 @@ class RenderDrawerWidget extends StatelessWidget {
 class SignInDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+    final loginVM = Provider.of<UserProvider>(context);
 
     return Drawer(
       child: ListView(
@@ -102,7 +102,7 @@ class SignInDrawer extends StatelessWidget {
 class SignOutDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+    final loginVM = Provider.of<UserProvider>(context);
 
     return Drawer(
       child: ListView(

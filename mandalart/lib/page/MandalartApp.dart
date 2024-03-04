@@ -8,8 +8,8 @@ import 'package:mandalart/provider/FirebaseProvider.dart';
 import 'package:provider/provider.dart';
 
 import '../firebase_options.dart';
-import '../provider/LoginProvider.dart';
 import '../provider/MandalartProvider.dart';
+import '../provider/UserProvider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

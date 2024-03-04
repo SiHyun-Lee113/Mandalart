@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
-import 'package:mandalart/provider/LoginProvider.dart';
+import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
 class MandalartShowPage extends StatefulWidget {

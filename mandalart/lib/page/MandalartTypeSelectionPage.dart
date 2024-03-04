@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/LoginProvider.dart';
+import '../provider/UserProvider.dart';
 
 class MandalartTypeSelectionPage extends StatefulWidget {
   const MandalartTypeSelectionPage({super.key});
@@ -16,7 +16,7 @@ class _MandalartTypeSelectionPageState
     extends State<MandalartTypeSelectionPage> {
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+    final loginVM = Provider.of<UserProvider>(context);
 
     return Scaffold(
       appBar: const RenderAppbar(title: '만다라트 유형 선택'),

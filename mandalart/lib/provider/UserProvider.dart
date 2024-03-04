@@ -3,14 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mandalart/DataModel/User.dart';
 
-class LoginViewModel extends ChangeNotifier {
-  late final MandalartUser _user = MandalartUser();
-  late final FirebaseAuth _auth = FirebaseAuth.instance;
-  late final GoogleSignIn _googleSignIn = GoogleSignIn();
-
-  LoginViewModel() {
-    getUserInfo();
-  }
+class UserProvider extends ChangeNotifier {
+  final MandalartUser _user = MandalartUser();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Stream<User?> get user => _auth.authStateChanges();
 
@@ -44,7 +40,7 @@ class LoginViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getUserInfo() {
+  Future<void> getUserInfo() async {
     try {
       User? user = _auth.currentUser;
       if (user != null) {
@@ -91,5 +87,9 @@ class LoginViewModel extends ChangeNotifier {
   String getUserPhotoUrl() {
     if (_user.photoUrl.isEmpty) return throw Exception('No login information');
     return _user.photoUrl;
+  }
+
+  String getDocId(int index) {
+    return _user.idList[index];
   }
 }

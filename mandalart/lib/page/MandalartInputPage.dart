@@ -3,8 +3,8 @@ import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMandalartInput.dart';
 import 'package:mandalart/provider/FirebaseProvider.dart';
-import 'package:mandalart/provider/LoginProvider.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
+import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
 class MandalartInputPage extends StatefulWidget {

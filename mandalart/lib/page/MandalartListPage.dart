@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
-import 'package:mandalart/provider/LoginProvider.dart';
+import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
 class MandalartListPage extends StatefulWidget {
@@ -13,7 +13,7 @@ class MandalartListPage extends StatefulWidget {
 class _MandalartListPageState extends State<MandalartListPage> {
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+    final loginVM = Provider.of<UserProvider>(context);
     return MaterialApp(
       home: Scaffold(
           appBar: const RenderAppbar(
@@ -37,7 +37,7 @@ class _MandalartListPageState extends State<MandalartListPage> {
                 ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/mdInputPage',
-                          arguments: 3);
+                          arguments: 8);
                     },
                     child: const Text('Mandalart Input page')),
               ],
