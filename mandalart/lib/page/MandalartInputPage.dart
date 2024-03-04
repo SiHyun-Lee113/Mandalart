@@ -5,6 +5,7 @@ import 'package:mandalart/component/WidgetsForMandalartInput.dart';
 import 'package:mandalart/provider/FirebaseProvider.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:mandalart/provider/UserProvider.dart';
+import 'package:mandalart/util/TextControllerCreator.dart';
 import 'package:provider/provider.dart';
 
 class MandalartInputPage extends StatefulWidget {
@@ -22,6 +23,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
   late final FirebaseProvider firebaseProvider;
   late final ExpansionTileController expansionController;
   late final int viewCount = widget.viewCount;
+  late final TextControllerCreator _creator = TextControllerCreator(viewCount);
 
   @override
   void initState() {
@@ -49,6 +51,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
                 padding: const EdgeInsets.all(8),
                 children: [
                   renderLevel1InputField(
+                      controller: _creator.forLv1Content,
                       expansionController: expansionController,
                       onSaved: (val) {
                         mandalartProvider.createMandalart(1, val);
@@ -62,6 +65,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
                       children: List.generate(viewCount, (index) {
                         final expansionController = ExpansionTileController();
                         return renderLevel2InputField(
+                          controller: _creator.forLv2Content[index],
                           expansionController: expansionController,
                           onSaved: (val) {
                             mandalartProvider.addSpecGoalsLv2(val);
@@ -85,6 +89,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
                               edgeInsets: EdgeInsets.only(
                                   bottom:
                                       MediaQuery.of(context).viewInsets.bottom),
+                              controllers: _creator.forLv3Content[index],
                             ),
                           ],
                         );

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../provider/MandalartProvider.dart';
 import '../util/style/MandalartStyle.dart';
 
-ExpansionTile renderLevel1InputField(
-    {required FormFieldSetter onSaved,
-    required String label,
-    required List<Widget> children,
-    required FormFieldValidator validator,
-    required ExpansionTileController expansionController,
-    required EdgeInsets edgeInsets}) {
-  final controller = TextEditingController();
-
+ExpansionTile renderLevel1InputField({
+  required FormFieldSetter onSaved,
+  required String label,
+  required List<Widget> children,
+  required FormFieldValidator validator,
+  required ExpansionTileController expansionController,
+  required EdgeInsets edgeInsets,
+  required TextEditingController controller,
+}) {
+  // TextEditingController controller = TextEditingController();
   return ExpansionTile(
     controller: expansionController,
     title: TextFormField(
@@ -43,8 +42,8 @@ ExpansionTile renderLevel2InputField({
   required FormFieldValidator validator,
   required ExpansionTileController expansionController,
   required EdgeInsets edgeInsets,
+  required TextEditingController controller,
 }) {
-  final controller = TextEditingController();
   return ExpansionTile(
     controller: expansionController,
     title: TextFormField(
@@ -72,9 +71,8 @@ GridView renderLevel3InputField(
     {required FormFieldSetter onSaved,
     required int viewCount,
     required FormFieldValidator validator,
-    required EdgeInsets edgeInsets}) {
-  List<TextEditingController> controllers =
-      List.generate(8, (index) => TextEditingController());
+    required EdgeInsets edgeInsets,
+    required List<TextEditingController> controllers}) {
   return GridView.count(
     shrinkWrap: true,
     crossAxisCount: viewCount == 8 ? 4 : 3,
