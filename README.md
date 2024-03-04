@@ -9,6 +9,7 @@
 - 데이터 베이스 : <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white">
 - UI 설계 : <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> 
 - 일정 관리 : <img src="https://img.shields.io/badge/Notion-00000?style=for-the-badge&logo=Notion&logoColor=white">
+  - 
 
 # 개발 기간 
 - 24.02.05 ~ 진행중
