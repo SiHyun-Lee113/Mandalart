@@ -5,8 +5,9 @@ import 'package:mandalart/component/WidgetsForMandalartInput.dart';
 import 'package:mandalart/provider/FirebaseProvider.dart';
 import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:mandalart/provider/UserProvider.dart';
-import 'package:mandalart/util/TextControllerCreator.dart';
 import 'package:provider/provider.dart';
+
+import '../util/TextControllerCreator.dart';
 
 class MandalartInputPage extends StatefulWidget {
   const MandalartInputPage({super.key, required this.viewCount});
@@ -23,7 +24,7 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
   late final FirebaseProvider firebaseProvider;
   late final ExpansionTileController expansionController;
   late final int viewCount = widget.viewCount;
-  late final TextControllerCreator _creator = TextControllerCreator(viewCount);
+  late final TextControllerCreator _creator;
 
   @override
   void initState() {
@@ -31,6 +32,9 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
     mandalartProvider = Provider.of<MandalartProvider>(context, listen: false);
     firebaseProvider = Provider.of<FirebaseProvider>(context, listen: false);
     expansionController = ExpansionTileController(); // 컨트롤러 초기화
+    _creator = TextControllerCreator(viewCount, mandalartProvider);
+    var length = _creator.forLv3Content.length;
+    print('asdfasdf  $length');
   }
 
   @override
