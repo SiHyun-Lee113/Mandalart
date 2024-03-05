@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/service/MandalartService.dart';
-import 'package:provider/provider.dart';
 
 import '../DataModel/Mandalart.dart';
 
 class MandalartProvider extends ChangeNotifier {
-  late Mandalart mandalart;
+  late Mandalart _mandalart = Mandalart.init();
+  final MandalartService mdService = MandalartService();
   bool _isExpanded = false;
 
+  MandalartProvider();
+  MandalartProvider.forUpdate(Mandalart mandalart) {
+    _mandalart = mandalart;
+  }
+
   bool get isExpanded => _isExpanded;
+  Mandalart get mandalart => _mandalart;
 
   void toggleExpanded() {
     print(_isExpanded);
@@ -18,31 +24,43 @@ class MandalartProvider extends ChangeNotifier {
 
   Mandalart createMandalart(int level, String content) {
     if (level == 1) {
-      mandalart = MandalartService().createMandalart(level, content);
+      _mandalart = mdService.createMandalart(level, content);
       notifyListeners();
-      return mandalart;
+      return _mandalart;
     } else {
       notifyListeners();
-      return MandalartService().createMandalart(level, content);
+      return mdService.createMandalart(level, content);
     }
   }
 
   void addSpecGoalsLv2(String content) {
-    var lv2Manda = MandalartService().createMandalart(2, content);
-    MandalartService().addSpecGoals(mandalart, lv2Manda);
+    var lv2Manda = mdService.createMandalart(2, content);
+    mdService.addSpecGoals(mandalart, lv2Manda);
     notifyListeners();
   }
 
   void addSpecGoalsLv3(int index, String content) {
-    var lv2Manda = MandalartService().getTopMandalart(index, mandalart);
+    var lv2Manda = mdService.getTopMandalart(index, mandalart);
 
-    var lv3Manda = MandalartService().createMandalart(3, content);
-    MandalartService().addSpecGoals(lv2Manda, lv3Manda);
+    var lv3Manda = mdService.createMandalart(3, content);
+    mdService.addSpecGoals(lv2Manda, lv3Manda);
     notifyListeners();
   }
-  
+
+  String getLv1Content() {
+    return mandalart.content;
+  }
+
+  List<Mandalart> getLv2Content() {
+    return mandalart.specificGoals;
+  }
+
+  List<Mandalart> getLv3Contents(int index) {
+    return mandalart.specificGoals[index].specificGoals;
+  }
+
   void printMandalart() {
-    MandalartService().printMandalart(mandalart);
+    mdService.printMandalart(mandalart);
   }
 
   String? notInputValidation(String input) {
