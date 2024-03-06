@@ -2,13 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mandalart/DataModel/User.dart';
+import 'package:mandalart/service/FirebaseService.dart';
 
 class UserProvider extends ChangeNotifier {
   final MandalartUser _user = MandalartUser();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseService _fbService = FirebaseService();
 
-  Stream<User?> get user => _auth.authStateChanges();
+  Stream<User?> get userAuth => _auth.authStateChanges();
 
   Future<void> handleAuth() async {
     if (_user.checkLogin()) {
@@ -47,6 +49,9 @@ class UserProvider extends ChangeNotifier {
         _user.name = user.displayName!;
         _user.email = user.email!;
         _user.photoUrl = user.photoURL!;
+        await _fbService
+            .getDocsList(user.email!)
+            .then((value) => _user.idList = value);
       } else {
         print('User is not logged in');
       }
@@ -87,6 +92,10 @@ class UserProvider extends ChangeNotifier {
   String getUserPhotoUrl() {
     if (_user.photoUrl.isEmpty) return throw Exception('No login information');
     return _user.photoUrl;
+  }
+
+  List<String> getDocIdList() {
+    return _user.idList;
   }
 
   String getDocId(int index) {

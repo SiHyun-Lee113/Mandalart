@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/page/MandalartInputPage.dart';
 import 'package:mandalart/page/MandalartListPage.dart';
 import 'package:mandalart/page/MandalartShowPage.dart';
 import 'package:mandalart/page/MandalartTypeSelectionPage.dart';
+import 'package:mandalart/page/MandalartUpdatePage.dart';
 import 'package:mandalart/provider/FirebaseProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,43 +22,47 @@ Future<void> main() async {
 
   runApp(
     MultiProvider(
-        providers: [
-          ChangeNotifierProvider<MandalartProvider>.value(
-              value: MandalartProvider()),
-          ChangeNotifierProvider<UserProvider>.value(
-            value: UserProvider(),
-          ),
-          ChangeNotifierProvider<FirebaseProvider>.value(
-            value: FirebaseProvider(),
-          )
-        ],
-        child: FutureBuilder(
-          future: _initializeApp(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
-            } else {
-              return MaterialApp(
-                title: '만다라트 계획표 애플리케이션',
-                initialRoute: '/mdList',
-                routes: {
-                  '/mdList': (context) => MandalartListPage(),
-                  '/mdShow': (context) {
-                    var arg =
-                        ModalRoute.of(context)?.settings.arguments as int?;
-                    return MandalartShowPage(docIndex: arg ?? -1);
-                  },
-                  '/mdTypeSelect': (context) => MandalartTypeSelectionPage(),
-                  '/mdInputPage': (context) {
-                    var arg =
-                        ModalRoute.of(context)?.settings.arguments as int?;
-                    return MandalartInputPage(viewCount: arg ?? -1);
-                  },
+      providers: [
+        ChangeNotifierProvider<MandalartProvider>.value(
+            value: MandalartProvider()),
+        ChangeNotifierProvider<UserProvider>.value(
+          value: UserProvider(),
+        ),
+        ChangeNotifierProvider<FirebaseProvider>.value(
+          value: FirebaseProvider(),
+        ),
+      ],
+      child: FutureBuilder(
+        future: _initializeApp(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else {
+            return MaterialApp(
+              title: '만다라트 계획표 애플리케이션',
+              initialRoute: '/mdList',
+              routes: {
+                '/mdList': (context) => MandalartListPage(),
+                '/mdShow': (context) {
+                  var arg = ModalRoute.of(context)?.settings.arguments as int?;
+                  return MandalartShowPage(docIndex: arg ?? -1);
                 },
-              );
-            }
-          },
-        )),
+                '/mdTypeSelect': (context) => MandalartTypeSelectionPage(),
+                '/mdInputPage': (context) {
+                  var arg = ModalRoute.of(context)?.settings.arguments as int?;
+                  return MandalartInputPage(viewCount: arg ?? -1);
+                },
+                '/mdUpdate': (context) {
+                  var arg = ModalRoute.of(context)?.settings.arguments
+                      as MandalartDto?;
+                  return MandalartUpdatePage(mdDto: arg!);
+                }
+              },
+            );
+          }
+        },
+      ),
+    ),
   );
 }
 
