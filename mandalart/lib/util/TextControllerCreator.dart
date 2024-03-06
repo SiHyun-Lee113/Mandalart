@@ -33,17 +33,14 @@ class TextControllerCreator {
   }
 
   void lv1Init() {
-    _forLv1Content = TextEditingController(text: _mdProvider.getLv1Content());
+    _forLv1Content =
+        TextEditingController(text: _mdProvider.getLv1Content() ?? '');
   }
 
   void lv2Init() {
     _forLv2Content = List.generate(_viewCount, (index) {
-      var content = _mdProvider.getLv2Content()[index].content;
-      if (content.isNotEmpty) {
-        return TextEditingController(text: content);
-      }
-
-      return TextEditingController();
+      var content = _mdProvider.getLv2Content()[index].content ?? '';
+      return TextEditingController(text: content);
     });
   }
 
@@ -51,12 +48,16 @@ class TextControllerCreator {
     _forLv3Content = List.generate(
         _viewCount,
         (indexLv2) => List.generate(_viewCount, (indexLv3) {
-              var content =
-                  _mdProvider.getLv3Contents(indexLv2)[indexLv3].content;
-              if (content.isNotEmpty) {
-                return TextEditingController(text: content);
+              late String content;
+              try {
+                content =
+                    _mdProvider.getLv3Contents(indexLv2)[indexLv3].content ??
+                        '';
+              } catch (e) {
+                content = '';
               }
-              return TextEditingController();
+
+              return TextEditingController(text: content);
             }));
   }
 

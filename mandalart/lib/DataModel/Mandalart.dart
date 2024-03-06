@@ -1,12 +1,17 @@
 import 'dart:core';
 
 class Mandalart {
-  final int _level;
-  final String _content;
+  int _level = -1;
+  String _content = '';
   List<Mandalart> _specificGoals = [];
 
-  Mandalart(this._level, this._content);
+  Mandalart(int level, String content) {
+    _level = level;
+    _content = content;
+  }
+  Mandalart.init();
 
+  String get content => _content;
   List<Mandalart> get specificGoals => _specificGoals;
 
   set specificGoals(List<Mandalart> value) {
