@@ -33,8 +33,6 @@ class _MandalartInputPageState extends State<MandalartInputPage> {
     firebaseProvider = Provider.of<FirebaseProvider>(context, listen: false);
     expansionController = ExpansionTileController(); // 컨트롤러 초기화
     _creator = TextControllerCreator(viewCount, mandalartProvider);
-    var length = _creator.forLv3Content.length;
-    print('asdfasdf  $length');
   }
 
   @override
