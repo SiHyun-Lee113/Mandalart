@@ -1,25 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/User.dart';
 import 'package:mandalart/service/FirebaseService.dart';
 
 import '../DataModel/Mandalart.dart';
+import '../DataModel/MandalartDto.dart';
 
 class FirebaseProvider extends ChangeNotifier {
   final MandalartUser _user = MandalartUser();
   final FirebaseService fbService = FirebaseService();
 
   Future<void> getUserDocsList() async {
-    try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection(_user.email).get();
-      List<String> docIds = querySnapshot.docs.map((doc) => doc.id).toList();
-      _user.idList = docIds;
+    fbService.getDocsList(_user.email).then((value) => _user.idList = value);
+    notifyListeners();
+  }
 
-      print('All Document IDs: $docIds');
-    } catch (e) {
-      print('Error getting document IDs: $e');
-    }
+  Future<Mandalart> getDocument(String docID) async {
+    return await fbService.getDocument(docID, _user.email);
   }
 
   Future<int> saveDocument(Mandalart mandalart) async {
@@ -34,13 +30,13 @@ class FirebaseProvider extends ChangeNotifier {
     return _user.idList.indexOf(docId);
   }
 
-  void updateDocument(Mandalart mandalart, int index) {
-    var mdMap = mandalart.toJson();
-    fbService.updateDocument(mdMap, _user.email, _user.idList[index]);
+  void updateDocument(MandalartDto mdDto) {
+    var mdMap = mdDto.mandalart.toJson();
+    fbService.updateDocument(mdMap, _user.email, mdDto.docId);
   }
 
-  void deleteDocument(int index) {
-    String docId = _user.idList[index];
+  void deleteDocument(MandalartDto mdDto) {
+    String docId = mdDto.docId;
     fbService.deleteDocument(_user.email, docId);
   }
 }
