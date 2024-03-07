@@ -14,8 +14,8 @@ class _MandalartListPage2State extends State<MandalartListPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const RenderAppbar(
-        title: '만다라트 ListPage',
+      appBar: const RenderAppbarMain(
+        title: '만다라트 목록',
       ),
       endDrawer: RenderDrawerWidget(),
       body: RenderMandalartList2(),

@@ -3,12 +3,11 @@ import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMandalartInput.dart';
+import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/MandalartProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:mandalart/util/TextControllerCreator2.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/FirebaseProvider2.dart';
 
 class MandalartUpdatePage2 extends StatefulWidget {
   const MandalartUpdatePage2({super.key, required this.mdDto});
@@ -125,7 +124,16 @@ class _MandalartUpdatePage2State extends State<MandalartUpdatePage2> {
           }
         },
         tooltip: 'save',
-        child: const Icon(Icons.add),
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.data_object),
+            Text(
+              '저장',
+              style: TextStyle(fontSize: 12),
+            )
+          ],
+        ),
       ),
     );
   }

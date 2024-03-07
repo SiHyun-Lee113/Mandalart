@@ -3,12 +3,11 @@ import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMandalartInput.dart';
+import 'package:mandalart/provider/FirebaseProvider2.dart';
+import 'package:mandalart/provider/MandalartProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
+import 'package:mandalart/util/TextControllerCreator2.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/FirebaseProvider2.dart';
-import '../provider/MandalartProvider2.dart';
-import '../util/TextControllerCreator2.dart';
 
 class MandalartInputPage2 extends StatefulWidget {
   const MandalartInputPage2({super.key, required this.viewCount});
