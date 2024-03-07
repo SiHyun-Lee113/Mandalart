@@ -18,7 +18,10 @@ class RenderMandalartList extends StatelessWidget {
           itemCount: docIdList.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(docIdList[index]),
+              title: Text(
+                docIdList[index],
+                textAlign: TextAlign.center,
+              ),
               onTap: () {
                 Navigator.pushNamed(context, '/mdShow', arguments: index);
               },
@@ -70,8 +73,10 @@ class RenderMainListForMD extends StatelessWidget {
       itemCount: list.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(list[index].docId),
-          subtitle: Text(list[index].mdType.toString()),
+          title: Text(
+            list[index].mandalart.content,
+            textAlign: TextAlign.center,
+          ),
           onTap: () {
             Navigator.pushNamed(context, '/mdShow', arguments: list[index]);
           },
