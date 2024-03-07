@@ -15,7 +15,7 @@ class FirebaseService {
 
   Future<Mandalart> getDocument(String docID, String collectionName) async {
     late Mandalart mandalart;
-    await FirebaseFirestore.instance
+    await db
         .collection(collectionName)
         .doc(docID)
         .get()

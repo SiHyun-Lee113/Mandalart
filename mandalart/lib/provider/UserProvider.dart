@@ -48,6 +48,7 @@ class UserProvider extends ChangeNotifier {
       if (user != null) {
         _user.name = user.displayName!;
         _user.email = user.email!;
+        _user.collection = user.email!;
         _user.photoUrl = user.photoURL!;
         await _fbService
             .getDocsList(user.email!)
