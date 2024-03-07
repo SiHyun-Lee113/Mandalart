@@ -4,11 +4,11 @@ import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMandalartInput.dart';
 import 'package:mandalart/provider/FirebaseProvider.dart';
-import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../util/TextControllerCreator.dart';
+import '../../provider/MandalartProvider.dart';
+import '../../util/TextControllerCreator.dart';
 
 class MandalartUpdatePage extends StatefulWidget {
   const MandalartUpdatePage({super.key, required this.mdDto});
@@ -25,13 +25,14 @@ class _MandalartUpdatePageState extends State<MandalartUpdatePage> {
   late final FirebaseProvider firebaseProvider;
   late final ExpansionTileController expansionController;
   late final TextControllerCreator _creator;
-
+  late final UserProvider userProvider;
   @override
   void initState() {
     super.initState();
     mandalartProvider = MandalartProvider.forUpdate(widget.mdDto.mandalart);
     firebaseProvider = Provider.of<FirebaseProvider>(context, listen: false);
     expansionController = ExpansionTileController(); // 컨트롤러 초기화
+    userProvider = Provider.of<UserProvider>(context);
     _creator = TextControllerCreator(widget.mdDto.mdType, mandalartProvider);
   }
 
@@ -109,7 +110,7 @@ class _MandalartUpdatePageState extends State<MandalartUpdatePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          loginVM.handleAuth();
+          if (!userProvider.checkLogin()) userProvider.handleAuth();
 
           if (formKey.currentState!.validate()) {
             formKey.currentState?.save();
@@ -135,7 +136,7 @@ class _MandalartUpdatePageState extends State<MandalartUpdatePage> {
             }
           }
         },
-        tooltip: 'Increment',
+        tooltip: 'save',
         child: const Icon(Icons.add),
       ),
     );

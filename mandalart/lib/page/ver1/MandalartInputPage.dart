@@ -7,7 +7,7 @@ import 'package:mandalart/provider/MandalartProvider.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../util/TextControllerCreator.dart';
+import '../../util/TextControllerCreator.dart';
 
 class MandalartInputPage extends StatefulWidget {
   const MandalartInputPage({super.key, required this.viewCount});

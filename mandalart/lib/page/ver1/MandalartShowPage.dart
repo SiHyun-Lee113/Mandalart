@@ -5,7 +5,7 @@ import 'package:mandalart/provider/FirebaseProvider.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../DataModel/Mandalart.dart';
+import '../../DataModel/Mandalart.dart';
 
 class MandalartShowPage extends StatefulWidget {
   const MandalartShowPage({super.key, required this.docIndex});
