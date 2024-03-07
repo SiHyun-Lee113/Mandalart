@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
+import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/FirebaseProvider2.dart';
 
 class MandalartShowPage2 extends StatefulWidget {
   const MandalartShowPage2({super.key, required this.mdDto});
@@ -53,7 +52,8 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
             child: FloatingActionButton(
               heroTag: 'updateBtn',
               onPressed: () {
-                Navigator.pushNamed(context, '/mdUpdate', arguments: mdDto);
+                Navigator.pushReplacementNamed(context, '/mdUpdate',
+                    arguments: mdDto);
               },
               tooltip: 'Update',
               child: const Column(
