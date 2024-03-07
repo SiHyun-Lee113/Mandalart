@@ -31,6 +31,28 @@ class RenderAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
+class RenderAppbarMain extends StatelessWidget implements PreferredSizeWidget {
+  const RenderAppbarMain({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(title),
+      actions: [
+        IconButton(
+            onPressed: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+            icon: const Icon(Icons.menu)),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
 class RenderDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
