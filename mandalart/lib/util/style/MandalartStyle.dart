@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ShapeDecoration squareStyle() {
@@ -38,11 +37,22 @@ InputDecoration MandalartTextFieldStyleLv2(String labelText) {
       borderRadius: BorderRadius.circular(10.0), // Set round border
       borderSide: BorderSide(color: Colors.blue), // Set border color
     ),
-    contentPadding: EdgeInsets.symmetric(vertical: 10.0), // Adjust the vertical padding
+    contentPadding:
+        EdgeInsets.symmetric(vertical: 10.0), // Adjust the vertical padding
     // Remove underline
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(10.0),
+    ),
+  );
+}
+
+ShapeDecoration decorationForMandalart(int colorCode) {
+  return ShapeDecoration(
+    color: Color(colorCode),
+    shape: RoundedRectangleBorder(
+      side: const BorderSide(width: 1),
+      borderRadius: BorderRadius.circular(10),
     ),
   );
 }
