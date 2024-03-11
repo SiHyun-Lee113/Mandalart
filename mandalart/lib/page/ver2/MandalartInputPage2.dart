@@ -91,7 +91,8 @@ class _MandalartInputPage2State extends State<MandalartInputPage2> {
                                 children: [
                                   renderLevel3InputField(
                                     onSaved: (val) {
-                                      mandalartProvider.addSpecGoalsLv3(0, val);
+                                      mandalartProvider.addSpecGoalsLv3(
+                                          index, val);
                                     },
                                     validator: (val) {
                                       return mandalartProvider

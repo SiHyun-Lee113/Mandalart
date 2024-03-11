@@ -1,41 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:mandalart/provider/MandalartProvider2.dart';
+import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/util/style/MandalartStyle.dart';
-import 'package:provider/provider.dart';
 
-void main() {
-  runApp(Directionality(textDirection: TextDirection.ltr, child: MyApp()));
-}
+import '../DataModel/Mandalart.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WidgetsForMdShow extends StatelessWidget {
+  const WidgetsForMdShow({super.key, required this.mdDto});
+
+  final MandalartDto mdDto;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Text('사각형 만다라트'),
-            ),
-            body: TestApp()));
+    switch (mdDto.mdType) {
+      case 3:
+        return Placeholder();
+      case 6:
+        return Placeholder();
+      case 8:
+        return SquareMdShowPage(mandalart: mdDto.mandalart);
+    }
+
+    return const Placeholder();
   }
 }
 
-class TestApp extends StatefulWidget {
-  const TestApp({super.key});
+class SquareMdShowPage extends StatelessWidget {
+  const SquareMdShowPage({super.key, required this.mandalart});
 
-  @override
-  State<TestApp> createState() => _TestAppState();
-}
-
-class _TestAppState extends State<TestApp> {
-  late MandalartProvider2 mdProvider;
-
-  @override
-  void initState() {
-    mdProvider = Provider.of<MandalartProvider2>(context);
-    super.initState();
-  }
+  final Mandalart mandalart;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +40,7 @@ class _TestAppState extends State<TestApp> {
               width: 400,
               height: 400,
               clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Stack(
                 children: [
                   lv1Goal(),
@@ -85,7 +77,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFD9D9),
-                child: const Center(child: Text('목표1')),
+                child: Center(child: Text(mandalart.specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -95,7 +87,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFEDD3),
-                child: const Center(child: Text('목표2')),
+                child: Center(child: Text(mandalart.specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -105,7 +97,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFE1FFD6),
-                child: const Center(child: Text('목표3')),
+                child: Center(child: Text(mandalart.specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -115,7 +107,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFED1FF),
-                child: const Center(child: Text('목표4')),
+                child: Center(child: Text(mandalart.specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -125,7 +117,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFFFFF),
-                child: const Center(child: Text('목표')),
+                child: Center(child: Text(mandalart.content)),
               ),
             ),
             Positioned(
@@ -135,7 +127,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCEF3F8),
-                child: const Center(child: Text('목표5')),
+                child: Center(child: Text(mandalart.specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -145,7 +137,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCDB6FF),
-                child: const Center(child: Text('목표6')),
+                child: Center(child: Text(mandalart.specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -155,7 +147,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFACBEFF),
-                child: const Center(child: Text('목표7')),
+                child: Center(child: Text(mandalart.specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -165,7 +157,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFA7C9FE),
-                child: const Center(child: Text('목표8')),
+                child: Center(child: Text(mandalart.specificGoals[7].content)),
               ),
             ),
           ],
@@ -190,7 +182,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -200,6 +194,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -209,6 +206,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -218,6 +218,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -227,9 +230,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFD9D9),
-                child: const Center(
-                  child: Text('목표1'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -239,6 +240,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -248,6 +252,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -257,6 +264,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -266,6 +276,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[0].specificGoals[7].content)),
               ),
             ),
           ],
@@ -290,7 +303,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -300,6 +315,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -309,6 +327,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -318,6 +339,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -327,9 +351,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFEED3),
-                child: const Center(
-                  child: Text('목표2'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -339,6 +361,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -348,6 +373,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -357,6 +385,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -366,6 +397,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[1].specificGoals[7].content)),
               ),
             ),
           ],
@@ -390,7 +424,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -400,6 +436,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -409,6 +448,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -418,6 +460,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -427,9 +472,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFE1FFD7),
-                child: const Center(
-                  child: Text('목표3'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -439,6 +482,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -448,6 +494,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -457,6 +506,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -466,6 +518,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[2].specificGoals[7].content)),
               ),
             ),
           ],
@@ -490,6 +545,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -499,6 +557,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -508,6 +569,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -517,6 +581,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -526,9 +593,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFED1FF),
-                child: const Center(
-                  child: Text('목표4'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -538,6 +603,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -547,6 +615,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -556,6 +627,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -565,6 +639,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[3].specificGoals[7].content)),
               ),
             ),
           ],
@@ -589,7 +666,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -599,6 +678,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -608,6 +690,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -617,6 +702,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -626,7 +714,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCEF3F8),
-                child: const Center(child: Text('목표5')),
+                child: Center(child: Text(mandalart.specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -636,6 +724,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -645,6 +736,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -654,6 +748,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -663,6 +760,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[4].specificGoals[7].content)),
               ),
             ),
           ],
@@ -687,7 +787,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -697,6 +799,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -706,6 +811,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -715,6 +823,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -724,9 +835,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCDB6FF),
-                child: const Center(
-                  child: Text('목표6'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -736,6 +845,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -745,6 +857,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -754,6 +869,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -763,6 +881,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[5].specificGoals[7].content)),
               ),
             ),
           ],
@@ -787,7 +908,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -797,6 +920,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -806,6 +932,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -815,6 +944,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -824,9 +956,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFACBFFF),
-                child: const Center(
-                  child: Text('목표7'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -836,6 +966,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -845,6 +978,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -854,6 +990,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -863,6 +1002,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[6].specificGoals[7].content)),
               ),
             ),
           ],
@@ -887,7 +1029,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Text(''),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[0].content)),
               ),
             ),
             Positioned(
@@ -897,6 +1041,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[1].content)),
               ),
             ),
             Positioned(
@@ -906,6 +1053,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[2].content)),
               ),
             ),
             Positioned(
@@ -915,6 +1065,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[3].content)),
               ),
             ),
             Positioned(
@@ -924,9 +1077,7 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFA7CAFE),
-                child: const Center(
-                  child: Text('목표8'),
-                ),
+                child: Center(child: Text(mandalart.specificGoals[7].content)),
               ),
             ),
             Positioned(
@@ -936,6 +1087,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[4].content)),
               ),
             ),
             Positioned(
@@ -945,6 +1099,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[5].content)),
               ),
             ),
             Positioned(
@@ -954,6 +1111,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[6].content)),
               ),
             ),
             Positioned(
@@ -963,6 +1123,9 @@ class _TestAppState extends State<TestApp> {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
+                child: Center(
+                    child: Text(
+                        mandalart.specificGoals[7].specificGoals[7].content)),
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
+import 'package:mandalart/component/WidgetsForMdShow.dart';
 import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
@@ -39,10 +40,7 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('data'),
-          Text(mdDto.mandalart.toJson().toString()),
-        ],
+        children: [WidgetsForMdShow(mdDto: mdDto)],
       )),
       floatingActionButton: Stack(
         children: [
