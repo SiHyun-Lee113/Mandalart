@@ -53,11 +53,11 @@ class RenderMandalartList2 extends StatelessWidget {
     if (userProvider.checkLogin()) {
       fbProvider.getMdDtoList();
       List<MandalartDto> mdDtoList = fbProvider.mdDtoList;
-      if (mdDtoList.isEmpty) return RenderMainListForNoMD();
+      if (mdDtoList.isEmpty) return const RenderMainListForNoMD();
 
       return RenderMainListForMD(list: mdDtoList);
     } else {
-      return RenderMainListForNoMD();
+      return const RenderMainListForNoMD();
     }
   }
 }
@@ -86,20 +86,51 @@ class RenderMainListForMD extends StatelessWidget {
   }
 }
 
-class RenderMainListForNoMD extends StatelessWidget {
+class RenderMainListForNoMD extends StatefulWidget {
   const RenderMainListForNoMD({super.key});
 
   @override
+  State<RenderMainListForNoMD> createState() => _RenderMainListForNoMDState();
+}
+
+class _RenderMainListForNoMDState extends State<RenderMainListForNoMD> {
+  late final FirebaseProvider2 firebaseProvider2;
+  List<MandalartDto> sampleList = [];
+
+  @override
+  void initState() {
+    firebaseProvider2 = Provider.of<FirebaseProvider2>(context, listen: false);
+    _loadData();
+    super.initState();
+  }
+
+  Future<void> _loadData() async {
+    try {
+      List<MandalartDto> data = await firebaseProvider2.getSampleList();
+      setState(() {
+        sampleList = data;
+      });
+    } catch (error) {
+      print('Error: $error');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        ListTile(
-          title: Text('오타니의 만다라트'),
-        ),
-        ListTile(
-          title: Text('새로운 만다라트를 만들어 보세요'),
-        )
-      ],
+    return ListView.builder(
+      itemCount: sampleList.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(
+            sampleList[index].mandalart.content,
+            textAlign: TextAlign.center,
+          ),
+          onTap: () {
+            Navigator.pushNamed(context, '/mdSampleShow',
+                arguments: sampleList[index]);
+          },
+        );
+      },
     );
   }
 }
