@@ -150,6 +150,8 @@ class _MandalartInputPage2State extends State<MandalartInputPage2> {
       _isLoading = false;
     });
 
+    mandalartProvider.resetMandalartDto();
+
     return dto;
   }
 

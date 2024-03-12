@@ -7,7 +7,6 @@ import '../DataModel/MandalartDto.dart';
 class MandalartProvider2 extends ChangeNotifier {
   MandalartDto _mandalartDto = MandalartDto.init();
   final MandalartService _mdService = MandalartService();
-  bool _isExpanded = false;
 
   MandalartProvider2();
 
@@ -15,15 +14,8 @@ class MandalartProvider2 extends ChangeNotifier {
     _mandalartDto = mdDto;
   }
 
-  bool get isExpanded => _isExpanded;
   Mandalart get mandalart => _mandalartDto.mandalart;
   MandalartDto get mandalartDto => _mandalartDto;
-
-  void toggleExpanded() {
-    print(_isExpanded);
-    _isExpanded = !_isExpanded;
-    notifyListeners();
-  }
 
   void createMandalart(int level, String content) {
     _mandalartDto.mandalart = _mdService.createMandalart(level, content);
@@ -64,5 +56,10 @@ class MandalartProvider2 extends ChangeNotifier {
       return '목표를 작성해 주세요!';
     }
     return null;
+  }
+
+  void resetMandalartDto() {
+    _mandalartDto = MandalartDto.init();
+    notifyListeners();
   }
 }

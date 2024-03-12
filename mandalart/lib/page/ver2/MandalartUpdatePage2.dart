@@ -143,6 +143,8 @@ class _MandalartUpdatePage2State extends State<MandalartUpdatePage2> {
     widget.mdDto.mandalart = mandalart;
     firebaseProvider.updateDocument(widget.mdDto);
 
+    mandalartProvider.resetMandalartDto();
+
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, '/mdShow', arguments: widget.mdDto);
   }
