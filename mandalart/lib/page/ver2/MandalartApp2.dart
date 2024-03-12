@@ -6,6 +6,7 @@ import 'package:mandalart/page/ver2/MandalartInputPage2.dart';
 import 'package:mandalart/page/ver2/MandalartListPage2.dart';
 import 'package:mandalart/page/ver2/MandalartShowPage2.dart';
 import 'package:mandalart/page/ver2/MandalartUpdatePage2.dart';
+import 'package:mandalart/page/ver2/SampleMandalartShowPage.dart';
 import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/MandalartProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
@@ -44,6 +45,12 @@ Future<void> main() async {
               initialRoute: '/mdList',
               routes: {
                 '/mdList': (context) => MandalartListPage2(),
+                '/mdSampleShow': (context) {
+                  var arg = ModalRoute.of(context)?.settings.arguments
+                      as MandalartDto?;
+                  return SampleMandalartShowPage2(
+                      mdDto: arg ?? MandalartDto.init());
+                },
                 '/mdShow': (context) {
                   var arg = ModalRoute.of(context)?.settings.arguments
                       as MandalartDto?;
@@ -69,6 +76,4 @@ Future<void> main() async {
 
 Future<void> _initializeApp() async {
   await UserProvider().getUserInfo();
-  await FirebaseProvider2().getUserDocsList();
-  await FirebaseProvider2().getMdDtoList();
 }
