@@ -1,0 +1,69 @@
+{
+  "level": 1,
+  "content": "8구단 드래프트 1순위",
+  "specificGoals": [
+    {
+      "level": 2,
+      "content": "몸 만들기",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "몸관리",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "영양제 먹기",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "FSQ 90kg",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "제구",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "인스텝 개선",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "몸통 강화",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "축 흔들지 않기",
+          "specificGoals": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "content": "구위",
+      "specificGoals": [
+        {
+          "level": 3,
+          "content": "각도를 만든다",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "위에서부터 공을 던진다",
+          "specificGoals": []
+        },
+        {
+          "level": 3,
+          "content": "손목 강화",
+          "specificGoals": []
+        }
+      ]
+    }
+  ]
+}
