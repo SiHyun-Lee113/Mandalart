@@ -11,14 +11,11 @@ ExpansionTile renderLevel1InputField({
   required EdgeInsets edgeInsets,
   required TextEditingController controller,
 }) {
-  // TextEditingController controller = TextEditingController();
   return ExpansionTile(
     controller: expansionController,
     title: TextFormField(
       onTap: () {
-        if (expansionController.isExpanded) {
-          expansionController.collapse();
-        } else {
+        if (!expansionController.isExpanded) {
           expansionController.expand();
         }
       },
@@ -28,9 +25,18 @@ ExpansionTile renderLevel1InputField({
       controller: controller,
       textAlign: TextAlign.center,
       decoration: MandalartTextFieldStyle(label),
-      onSaved: onSaved,
+      onSaved: (val) {
+        onSaved(val);
+      },
       validator: validator,
     ),
+    onExpansionChanged: (expanded) {
+      if (!expansionController.isExpanded) {
+        expansionController.expand();
+      }
+    },
+    leading: const SizedBox(),
+    trailing: const SizedBox(),
     children: children,
   );
 }
@@ -44,14 +50,14 @@ ExpansionTile renderLevel2InputField({
   required EdgeInsets edgeInsets,
   required TextEditingController controller,
 }) {
+  bool isExpanded = false;
+
   return ExpansionTile(
     controller: expansionController,
     title: TextFormField(
       scrollPadding: edgeInsets,
       onTap: () {
-        if (expansionController.isExpanded) {
-          expansionController.collapse();
-        } else {
+        if (!expansionController.isExpanded) {
           expansionController.expand();
         }
       },
@@ -60,9 +66,18 @@ ExpansionTile renderLevel2InputField({
       controller: controller,
       textAlign: TextAlign.center,
       decoration: MandalartTextFieldStyleLv2(label),
-      onSaved: onSaved,
+      onSaved: (val) {
+        onSaved(val);
+      },
       validator: validator,
     ),
+    onExpansionChanged: (expanded) {
+      if (!expansionController.isExpanded) {
+        expansionController.expand();
+      }
+    },
+    leading: const SizedBox(),
+    trailing: const SizedBox(),
     children: children,
   );
 }
@@ -93,8 +108,8 @@ GridView renderLevel3InputField(
             controller: controllers[index],
             onSaved: onSaved,
             validator: validator,
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(8.0),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.all(8.0),
               border: InputBorder.none,
             ),
           ),
