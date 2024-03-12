@@ -77,7 +77,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFD9D9),
-                child: Center(child: Text(mandalart.specificGoals[0].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 0))),
               ),
             ),
             Positioned(
@@ -87,7 +87,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFEDD3),
-                child: Center(child: Text(mandalart.specificGoals[1].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 1))),
               ),
             ),
             Positioned(
@@ -97,7 +97,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFE1FFD6),
-                child: Center(child: Text(mandalart.specificGoals[2].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 2))),
               ),
             ),
             Positioned(
@@ -107,7 +107,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFED1FF),
-                child: Center(child: Text(mandalart.specificGoals[3].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 3))),
               ),
             ),
             Positioned(
@@ -127,7 +127,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCEF3F8),
-                child: Center(child: Text(mandalart.specificGoals[4].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 4))),
               ),
             ),
             Positioned(
@@ -137,7 +137,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCDB6FF),
-                child: Center(child: Text(mandalart.specificGoals[5].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 5))),
               ),
             ),
             Positioned(
@@ -147,7 +147,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFACBEFF),
-                child: Center(child: Text(mandalart.specificGoals[6].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 6))),
               ),
             ),
             Positioned(
@@ -157,7 +157,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFA7C9FE),
-                child: Center(child: Text(mandalart.specificGoals[7].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 7))),
               ),
             ),
           ],
@@ -182,9 +182,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 0))),
               ),
             ),
             Positioned(
@@ -194,9 +193,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 1))),
               ),
             ),
             Positioned(
@@ -206,9 +204,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 2))),
               ),
             ),
             Positioned(
@@ -218,9 +215,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 3))),
               ),
             ),
             Positioned(
@@ -230,7 +226,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFD9D9),
-                child: Center(child: Text(mandalart.specificGoals[0].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 0))),
               ),
             ),
             Positioned(
@@ -240,9 +236,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 4))),
               ),
             ),
             Positioned(
@@ -252,9 +247,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 5))),
               ),
             ),
             Positioned(
@@ -264,9 +258,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 6))),
               ),
             ),
             Positioned(
@@ -276,9 +269,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFD9D9),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[0].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 0, 7))),
               ),
             ),
           ],
@@ -303,9 +295,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 0))),
               ),
             ),
             Positioned(
@@ -315,9 +306,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 1))),
               ),
             ),
             Positioned(
@@ -327,9 +317,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 2))),
               ),
             ),
             Positioned(
@@ -339,9 +328,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 3))),
               ),
             ),
             Positioned(
@@ -351,7 +339,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFFEED3),
-                child: Center(child: Text(mandalart.specificGoals[1].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 1))),
               ),
             ),
             Positioned(
@@ -361,9 +349,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 4))),
               ),
             ),
             Positioned(
@@ -373,9 +360,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 5))),
               ),
             ),
             Positioned(
@@ -385,9 +371,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 6))),
               ),
             ),
             Positioned(
@@ -397,9 +382,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FFEED3),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[1].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 1, 7))),
               ),
             ),
           ],
@@ -424,9 +408,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 0))),
               ),
             ),
             Positioned(
@@ -436,9 +419,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 1))),
               ),
             ),
             Positioned(
@@ -448,9 +430,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 2))),
               ),
             ),
             Positioned(
@@ -460,9 +441,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 3))),
               ),
             ),
             Positioned(
@@ -472,7 +452,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFE1FFD7),
-                child: Center(child: Text(mandalart.specificGoals[2].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 2))),
               ),
             ),
             Positioned(
@@ -482,9 +462,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 4))),
               ),
             ),
             Positioned(
@@ -494,9 +473,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 5))),
               ),
             ),
             Positioned(
@@ -506,9 +484,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 6))),
               ),
             ),
             Positioned(
@@ -518,9 +495,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33E1FFD7),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[2].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 2, 7))),
               ),
             ),
           ],
@@ -545,9 +521,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 0))),
               ),
             ),
             Positioned(
@@ -557,9 +532,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 1))),
               ),
             ),
             Positioned(
@@ -569,9 +543,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 2))),
               ),
             ),
             Positioned(
@@ -581,9 +554,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 3))),
               ),
             ),
             Positioned(
@@ -593,7 +565,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFFED1FF),
-                child: Center(child: Text(mandalart.specificGoals[3].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 3))),
               ),
             ),
             Positioned(
@@ -603,9 +575,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 4))),
               ),
             ),
             Positioned(
@@ -615,9 +586,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 5))),
               ),
             ),
             Positioned(
@@ -627,9 +597,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 6))),
               ),
             ),
             Positioned(
@@ -639,9 +608,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33FED1FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[3].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 3, 7))),
               ),
             ),
           ],
@@ -666,9 +634,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 0))),
               ),
             ),
             Positioned(
@@ -678,9 +645,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 1))),
               ),
             ),
             Positioned(
@@ -690,9 +656,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 2))),
               ),
             ),
             Positioned(
@@ -702,9 +667,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 3))),
               ),
             ),
             Positioned(
@@ -714,7 +678,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCEF3F8),
-                child: Center(child: Text(mandalart.specificGoals[4].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 4))),
               ),
             ),
             Positioned(
@@ -724,9 +688,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 4))),
               ),
             ),
             Positioned(
@@ -736,9 +699,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 5))),
               ),
             ),
             Positioned(
@@ -748,9 +710,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 6))),
               ),
             ),
             Positioned(
@@ -760,9 +721,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CEF3F8),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[4].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 4, 7))),
               ),
             ),
           ],
@@ -787,9 +747,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 0))),
               ),
             ),
             Positioned(
@@ -799,9 +758,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 1))),
               ),
             ),
             Positioned(
@@ -811,9 +769,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 2))),
               ),
             ),
             Positioned(
@@ -823,9 +780,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 3))),
               ),
             ),
             Positioned(
@@ -835,7 +791,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFCDB6FF),
-                child: Center(child: Text(mandalart.specificGoals[5].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 5))),
               ),
             ),
             Positioned(
@@ -845,9 +801,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 4))),
               ),
             ),
             Positioned(
@@ -857,9 +812,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 5))),
               ),
             ),
             Positioned(
@@ -869,9 +823,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 6))),
               ),
             ),
             Positioned(
@@ -881,9 +834,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33CDB6FF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[5].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 5, 7))),
               ),
             ),
           ],
@@ -908,9 +860,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 0))),
               ),
             ),
             Positioned(
@@ -920,9 +871,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 1))),
               ),
             ),
             Positioned(
@@ -932,9 +882,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 2))),
               ),
             ),
             Positioned(
@@ -944,9 +893,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 3))),
               ),
             ),
             Positioned(
@@ -956,7 +904,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFACBFFF),
-                child: Center(child: Text(mandalart.specificGoals[6].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 6))),
               ),
             ),
             Positioned(
@@ -966,9 +914,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 4))),
               ),
             ),
             Positioned(
@@ -978,9 +925,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 5))),
               ),
             ),
             Positioned(
@@ -990,9 +936,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 6))),
               ),
             ),
             Positioned(
@@ -1002,9 +947,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33ACBFFF),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[6].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 6, 7))),
               ),
             ),
           ],
@@ -1029,9 +973,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[0].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 0))),
               ),
             ),
             Positioned(
@@ -1041,9 +984,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[1].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 1))),
               ),
             ),
             Positioned(
@@ -1053,9 +995,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[2].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 2))),
               ),
             ),
             Positioned(
@@ -1065,9 +1006,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[3].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 3))),
               ),
             ),
             Positioned(
@@ -1077,7 +1017,7 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0xFFA7CAFE),
-                child: Center(child: Text(mandalart.specificGoals[7].content)),
+                child: Center(child: Text(safelyGetLv2Content(mandalart, 7))),
               ),
             ),
             Positioned(
@@ -1087,9 +1027,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[4].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 4))),
               ),
             ),
             Positioned(
@@ -1099,9 +1038,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[5].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 5))),
               ),
             ),
             Positioned(
@@ -1111,9 +1049,8 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[6].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 6))),
               ),
             ),
             Positioned(
@@ -1123,14 +1060,29 @@ class SquareMdShowPage extends StatelessWidget {
                 width: 40.78,
                 height: 40.78,
                 decoration: decorationForMandalart(0x33A7CAFE),
-                child: Center(
-                    child: Text(
-                        mandalart.specificGoals[7].specificGoals[7].content)),
+                child:
+                    Center(child: Text(safelyGetLv3Content(mandalart, 7, 7))),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  String safelyGetLv3Content(Mandalart mandalart, int lv2, int lv3) {
+    try {
+      return mandalart.specificGoals[lv2].specificGoals[lv3].content;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  String safelyGetLv2Content(Mandalart mandalart, int lv2) {
+    try {
+      return mandalart.specificGoals[lv2].content;
+    } catch (e) {
+      return '';
+    }
   }
 }
