@@ -52,7 +52,15 @@ ShapeDecoration decorationForMandalart(int colorCode) {
     color: Color(colorCode),
     shape: RoundedRectangleBorder(
       side: const BorderSide(width: 1),
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(3),
     ),
   );
+}
+
+TextStyle styleForMandalart(double fontSize) {
+  return TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: fontSize,
+      height: 1.2,
+      wordSpacing: 1.0);
 }
