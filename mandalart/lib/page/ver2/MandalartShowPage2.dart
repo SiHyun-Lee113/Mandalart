@@ -1,10 +1,14 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForMdShow.dart';
 import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 class MandalartShowPage2 extends StatefulWidget {
   const MandalartShowPage2({super.key, required this.mdDto});
@@ -19,6 +23,8 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
   late final UserProvider loginVM;
   late final FirebaseProvider2 firebaseVM;
   late final MandalartDto mdDto;
+  WidgetsToImageController controller = WidgetsToImageController();
+  Uint8List? bytes;
 
   @override
   void initState() {
@@ -40,7 +46,12 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [WidgetsForMdShow(mdDto: mdDto)],
+        children: [
+          WidgetsToImage(
+            controller: controller,
+            child: WidgetsForMdShow(mdDto: mdDto),
+          ),
+        ],
       )),
       floatingActionButton: Stack(
         children: [
@@ -71,7 +82,14 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
                 Alignment.bottomRight.x - 0.1, Alignment.bottomRight.y),
             child: FloatingActionButton(
               heroTag: 'shareBtn',
-              onPressed: () {},
+              onPressed: () async {
+                final bytes = await controller.capture();
+                final result = await ImageGallerySaver.saveImage(bytes!);
+                print('Image saved to gallery: $result');
+                setState(() {
+                  this.bytes = bytes;
+                });
+              },
               tooltip: 'Share',
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -89,4 +107,6 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
       ),
     );
   }
+
+  Widget buildImage(Uint8List bytes) => Image.memory(bytes);
 }
