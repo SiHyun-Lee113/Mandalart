@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
-import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMdShow.dart';
 import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
@@ -21,7 +20,6 @@ class _SampleMandalartShowPage2State extends State<SampleMandalartShowPage2> {
   late final UserProvider loginVM;
   late final FirebaseProvider2 firebaseVM;
   late final MandalartDto mdDto;
-  String type = '어라?';
 
   @override
   void initState() {
@@ -29,15 +27,6 @@ class _SampleMandalartShowPage2State extends State<SampleMandalartShowPage2> {
     loginVM = Provider.of<UserProvider>(context, listen: false);
     firebaseVM = Provider.of<FirebaseProvider2>(context, listen: false);
     mdDto = widget.mdDto;
-
-    switch (mdDto.mdType) {
-      case 3:
-        type = '삼각형';
-      case 6:
-        type = '육각형';
-      case 8:
-        type = '사각형';
-    }
   }
 
   @override
@@ -45,7 +34,7 @@ class _SampleMandalartShowPage2State extends State<SampleMandalartShowPage2> {
     print('_MandalartShowPage2State.build ${mdDto.mandalart}');
     return Scaffold(
       appBar: RenderAppbar(
-        title: '오타니의 $type 만다라트',
+        title: '오타니의 만다라트',
       ),
       endDrawer: RenderDrawerWidget(),
       body: Center(
@@ -55,7 +44,7 @@ class _SampleMandalartShowPage2State extends State<SampleMandalartShowPage2> {
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          typeSelectDialog(context);
+          Navigator.pushNamed(context, '/mdInputPage', arguments: 8);
         },
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,

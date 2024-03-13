@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
-import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/component/WidgetsForMain.dart';
 
 class MandalartListPage2 extends StatefulWidget {
@@ -21,7 +20,7 @@ class _MandalartListPage2State extends State<MandalartListPage2> {
       body: RenderMandalartList2(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          typeSelectDialog(context);
+          Navigator.pushNamed(context, '/mdInputPage', arguments: 8);
         },
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
