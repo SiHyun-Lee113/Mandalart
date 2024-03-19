@@ -1,13 +1,15 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:mandalart/DataModel/MandalartDto.dart';
 import 'package:mandalart/component/WidgetsForAppbar.dart';
 import 'package:mandalart/component/WidgetsForMdShow.dart';
 import 'package:mandalart/provider/FirebaseProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
 class MandalartShowPage2 extends StatefulWidget {
@@ -84,11 +86,13 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
               heroTag: 'shareBtn',
               onPressed: () async {
                 final bytes = await controller.capture();
-                final result = await ImageGallerySaver.saveImage(bytes!);
-                print('Image saved to gallery: $result');
+                // final result = await ImageGallerySaver.saveImage(bytes!);
+                // print('Image saved to gallery: $result');
                 setState(() {
                   this.bytes = bytes;
                 });
+
+                _shareImage();
               },
               tooltip: 'Share',
               child: const Column(
@@ -106,6 +110,19 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
         ],
       ),
     );
+  }
+
+  void _shareImage() async {
+    try {
+      final tempDir = await getTemporaryDirectory();
+      final tempPath = tempDir.path;
+      final tempFile = await File('$tempPath/image.png').create();
+      await tempFile.writeAsBytes(bytes as List<int>);
+
+      Share.shareFiles([tempFile.path], text: 'Check out this image!');
+    } catch (e) {
+      print('Error sharing image: $e');
+    }
   }
 
   Widget buildImage(Uint8List bytes) => Image.memory(bytes);
