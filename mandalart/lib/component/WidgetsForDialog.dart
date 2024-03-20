@@ -75,3 +75,44 @@ Future<void> typeSelectDialog(BuildContext context) async {
         );
       });
 }
+
+Future<bool> deleteDialog(BuildContext context) async {
+  bool result = false;
+
+  await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          title: const FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text('삭제 하시겠습니까?'),
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  result = false;
+                  Navigator.pop(context);
+                },
+                child: const Text('아니요'),
+              ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  result = true;
+                  Navigator.pop(context);
+                },
+                child: const Text('예'),
+              ),
+              const Spacer(),
+            ],
+          ),
+        );
+      });
+
+  return result;
+}

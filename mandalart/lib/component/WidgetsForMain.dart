@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mandalart/DataModel/MandalartDto.dart';
+import 'package:mandalart/component/WidgetsForDialog.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -69,6 +70,9 @@ class RenderMainListForMD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseProvider2 firebaseProvider2 =
+        Provider.of<FirebaseProvider2>(context);
+
     return ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, index) {
@@ -79,6 +83,13 @@ class RenderMainListForMD extends StatelessWidget {
           ),
           onTap: () {
             Navigator.pushNamed(context, '/mdShow', arguments: list[index]);
+          },
+          onLongPress: () async {
+            bool deleteResult = await deleteDialog(context);
+
+            if (deleteResult) {
+              firebaseProvider2.deleteDocument(list[index]);
+            }
           },
         );
       },
