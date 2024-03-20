@@ -1,5 +1,6 @@
 # 프로젝트 소개
 - 만다라트 계획표 공유 애플리케이션
+- 소개 사이트 : https://plastic-pearl-eb7.notion.site/cb2f624ff43642b99264936d20da8c14
 
 # 개발 환경
 - Android Studio Hedgehog | 2023.1.1 Patch 1
@@ -16,6 +17,3 @@
 
 # 개발 목표
 - 만다라트 계획표 생성 및 공유 애플리케이션 개발
-
-# 사용법
-- https://plastic-pearl-eb7.notion.site/238cbe1de8df460fb05b884557126f96
