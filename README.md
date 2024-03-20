@@ -12,14 +12,10 @@
   - 
 
 # 개발 기간 
-- 24.02.05 ~ 진행중
+- 24.02.05 ~ 24.03.21
 
 # 개발 목표
-- 여러 템플릿의 만다라트 계획표 생성 및 공유 애플리케이션 개발
-- 유저들의 계획에 대한 정보 수집 및 분석을 통한 맞춤 광고 제공를 위한 Admin 데쉬보드 개발
+- 만다라트 계획표 생성 및 공유 애플리케이션 개발
 
 # 사용법
-- TODO: [사용법 URL 입력]
-
-# 기능 리스트
-- https://github.com/SiHyun-Lee113/Mandalart/blob/main/mandalart/README.md
+- https://plastic-pearl-eb7.notion.site/238cbe1de8df460fb05b884557126f96

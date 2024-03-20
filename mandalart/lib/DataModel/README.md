@@ -10,14 +10,16 @@ class Mandalart {
     Mandalart JsonToMandalart(String json){}   
 }
 ```
-## 만다라트 User 데이터
+## 만다라트 DTO 데이터
+- 기존 Mandalart 객체만 가지고 애플리케이션을 관리하기 어렵다고 판단해서 제목 필드 및 도큐면트 아이디 필드를 추가
 ```dart
-class MandalartUser {
-  String _name = '';
-  String _collectionName = '';
+class MandalartDto {
+  String _docId = '';
+  int _mdType = -1;
+  String _mdTitle = '';
+  Mandalart _mandalart = Mandalart.init();
 
-  static final MandalartUser _instance = MandalartUser._internal();
-  factory MandalartUser() => _instance;
-  MandalartUser._internal();
+  Map<String, dynamic> toJson() {}
+  static MandalartDto fromJson(Map<String, dynamic> json) {}
 }
 ```
