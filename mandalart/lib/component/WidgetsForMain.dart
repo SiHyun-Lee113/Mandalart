@@ -76,21 +76,40 @@ class RenderMainListForMD extends StatelessWidget {
     return ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(
-            list[index].mandalart.content,
-            textAlign: TextAlign.center,
-          ),
-          onTap: () {
-            Navigator.pushNamed(context, '/mdShow', arguments: list[index]);
-          },
-          onLongPress: () async {
-            bool deleteResult = await deleteDialog(context);
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(width: 1.4),
+            ),
+            child: ListTile(
+              title: Text(
+                list[index].mdTitle,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: Text(
+                  list[index].mandalart.content,
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w400),
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/mdShow', arguments: list[index]);
+              },
+              onLongPress: () async {
+                bool deleteResult = await deleteDialog(context);
 
-            if (deleteResult) {
-              firebaseProvider2.deleteDocument(list[index]);
-            }
-          },
+                if (deleteResult) {
+                  firebaseProvider2.deleteDocument(list[index]);
+                }
+              },
+            ),
+          ),
         );
       },
     );
@@ -131,15 +150,41 @@ class _RenderMainListForNoMDState extends State<RenderMainListForNoMD> {
     return ListView.builder(
       itemCount: sampleList.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(
-            sampleList[index].mandalart.content,
-            textAlign: TextAlign.center,
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(width: 1.4),
+            ),
+            child: ListTile(
+              title: Text(
+                sampleList[index].mdTitle,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: Text(
+                  sampleList[index].mandalart.content,
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w400),
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/mdShow',
+                    arguments: sampleList[index]);
+              },
+              onLongPress: () async {
+                bool deleteResult = await deleteDialog(context);
+
+                if (deleteResult) {
+                  firebaseProvider2.deleteDocument(sampleList[index]);
+                }
+              },
+            ),
           ),
-          onTap: () {
-            Navigator.pushNamed(context, '/mdSampleShow',
-                arguments: sampleList[index]);
-          },
         );
       },
     );

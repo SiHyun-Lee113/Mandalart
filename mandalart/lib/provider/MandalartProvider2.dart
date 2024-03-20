@@ -17,6 +17,14 @@ class MandalartProvider2 extends ChangeNotifier {
   Mandalart get mandalart => _mandalartDto.mandalart;
   MandalartDto get mandalartDto => _mandalartDto;
 
+  void setMdTitle(String value) {
+    mandalartDto.mdTitle = value;
+  }
+
+  String getMdTitle() {
+    return mandalartDto.mdTitle;
+  }
+
   void createMandalart(int level, String content) {
     _mandalartDto.mandalart = _mdService.createMandalart(level, content);
   }

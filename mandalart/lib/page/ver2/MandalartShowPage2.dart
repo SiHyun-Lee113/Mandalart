@@ -38,11 +38,9 @@ class _MandalartShowPage2State extends State<MandalartShowPage2> {
 
   @override
   Widget build(BuildContext context) {
-    String user = loginVM.getUserName();
-    print('_MandalartShowPage2State.build ${mdDto.mandalart}');
     return Scaffold(
       appBar: RenderAppbar(
-        title: user,
+        title: mdDto.mdTitle,
       ),
       endDrawer: RenderDrawerWidget(),
       body: Center(

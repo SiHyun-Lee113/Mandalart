@@ -21,8 +21,9 @@ class FirebaseService2 {
     querySnapshot.docs.forEach((doc) {
       Mandalart md = Mandalart.fromJson(doc.get('mandalart'));
       String id = doc.get('docId');
+      String title = doc.get('mdTitle');
       int type = doc.get('mdType');
-      mdDtoList.add(MandalartDto(id, type, md));
+      mdDtoList.add(MandalartDto(id, type, title, md));
     });
 
     return mdDtoList;

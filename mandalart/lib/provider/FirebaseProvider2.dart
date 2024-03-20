@@ -35,9 +35,10 @@ class FirebaseProvider2 extends ChangeNotifier {
     Map<String, dynamic> triMd = jsonDecode(triangle);
     Map<String, dynamic> squMd = jsonDecode(square);
 
-    sampleList.add(MandalartDto('', 8, Mandalart.fromJson(squMd)));
-    sampleList.add(MandalartDto('', 6, Mandalart.fromJson(triMd)));
-    sampleList.add(MandalartDto('', 3, Mandalart.fromJson(hexMd)));
+    if (_sampleList.isEmpty) {
+      sampleList
+          .add(MandalartDto('', 8, '오타니의 만다라트', Mandalart.fromJson(squMd)));
+    }
 
     print('FirebaseProvider2.getSampleList');
     print(sampleList.toString());

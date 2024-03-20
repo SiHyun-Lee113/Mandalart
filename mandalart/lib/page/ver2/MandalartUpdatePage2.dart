@@ -41,7 +41,9 @@ class _MandalartUpdatePage2State extends State<MandalartUpdatePage2> {
     print('user : ${userProvider.getUserName()}');
 
     return Scaffold(
-      appBar: const RenderAppbar(title: '삼각형 만다라트'),
+      appBar: RenderInputPageAppbar(
+        mdTitle: mandalartProvider.mandalartDto.mdTitle,
+      ),
       endDrawer: RenderDrawerWidget(),
       body: Column(
         mainAxisSize: MainAxisSize.max,

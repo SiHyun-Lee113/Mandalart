@@ -41,7 +41,7 @@ class _MandalartInputPage2State extends State<MandalartInputPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const RenderAppbar(title: '제목 입력으로 변경'),
+      appBar: const RenderInputPageAppbar(),
       endDrawer: RenderDrawerWidget(),
       body: _isLoading
           ? const Center(

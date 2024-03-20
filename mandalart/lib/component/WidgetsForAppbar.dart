@@ -1,7 +1,50 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mandalart/provider/MandalartProvider2.dart';
 import 'package:mandalart/provider/UserProvider.dart';
 import 'package:provider/provider.dart';
+
+class RenderInputPageAppbar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const RenderInputPageAppbar({super.key, this.mdTitle});
+
+  final String? mdTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final MandalartProvider2 mdProvider =
+        Provider.of<MandalartProvider2>(context);
+
+    final TextEditingController controller =
+        TextEditingController(text: mdTitle ?? '');
+
+    return AppBar(
+      title: TextField(
+        controller: controller,
+        decoration: const InputDecoration(labelText: '만다라트 제목을 입력해 주세요!'),
+        onChanged: (value) {
+          mdProvider.setMdTitle(value);
+        },
+      ),
+      leading: IconButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: const Icon(Icons.arrow_back),
+      ),
+      actions: [
+        IconButton(
+            onPressed: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+            icon: const Icon(Icons.menu)),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
 
 class RenderAppbar extends StatelessWidget implements PreferredSizeWidget {
   const RenderAppbar({Key? key, required this.title}) : super(key: key);
